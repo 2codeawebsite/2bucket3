@@ -25,8 +25,9 @@ class GoalTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	public function testCalcualteAvarageGoals() {
-		$goal = Goal::calcualteAvarageGoals();
-		$this->assertEquals($goal, 10);
+		$goal = new Goal();//1, 1, '2013-08-30', 'Go to Syria', 'Talk to the Syrian leader and tell him that he is OK');
+		$count = $goal->calcualteAvarageGoals();
+		$this->assertEquals($count, 10);
 	}
 	
 	
