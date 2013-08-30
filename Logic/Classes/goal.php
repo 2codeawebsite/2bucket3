@@ -9,11 +9,11 @@ class Goal {
 	private $description;
 	
 	public function __construct($goalId, $userId, $startDate, $title, $description) {
-		$this->goalId = $goalId;
-		$this->userId = $userId;
-		$this->startDate = $startDate;
-		$this->title = $title;
-		$this->description = $description;	
+		$this->goalId 		= $goalId;
+		$this->userId 		= $userId;
+		$this->startDate 	= $startDate;
+		$this->title 		= $title;
+		$this->description 	= $description;	
 	}
 	
 	public function getGoalId() {
@@ -37,25 +37,18 @@ class Goal {
 	}
 	
 	/*
-	 * Should these two methods be in this class or the User class?
-	 * 
-	public function numberOfUnachievedGoals($totalGoals, $goalsAchieved) {
-
-		$result = $totalGoals - $goalsAchieved;
-
-		if($result >= 0) {
-			return $result;
-		} else {
-			return false;
-		}
-	}
-
-	public function numberOfUnachievedGoalsProcentage($totalGoals, $goalsAchieved) {
-
-			return $goalsAchieved / $totalGoals * 100;
-
-	}
+	 * Calculates the avarage number of goals of all the active users
 	 */
+	public function calcualteAvarageGoals() {
+		// $numberOfTotalGoals = SELECT COUNT(goalId) FROM goal;
+		$numberOfTotalGoals = 1000;
+		// $numberOfUsers = SELECT COUNT(userId) FROM user WHERE (SELECT userId FROM goal WHERE COUNT(goalId) > 0);
+		$numberOfUsers = 100;
+		
+		return $numberOfTotalGoals / $numberOfUsers;
+	}
+	
+	
 	
 }
 

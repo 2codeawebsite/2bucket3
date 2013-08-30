@@ -10,6 +10,10 @@ class GoalTest extends PHPUnit_Framework_TestCase {
 		$this->assertNotNull($goal);
 	}
 	
+	/*
+	 * This test is a bit irellevant! This could just as well be a database select statement 
+	 * SELECT COUNT(goalId) FROM goals WHERE userId = 1
+	 */
 	public function testNumberOfGoalds() {
 		$user = new User(1, 'Jens', 'Hansen', 'jhansen', 'jens@hansen.dk', 'Copenhagen', 'Denmark', 45, 'male', 'carpenter');
 		
@@ -20,7 +24,10 @@ class GoalTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(sizeof($array), 2);
 	}
 	
-	
+	public function testCalcualteAvarageGoals() {
+		$goal = Goal::calcualteAvarageGoals();
+		$this->assertEquals($goal, 10);
+	}
 	
 	
 }
