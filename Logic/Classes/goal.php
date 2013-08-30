@@ -19,8 +19,7 @@ class Goal {
 	 */
 	 
 	public static function constructEmpty() {
-		$goal = new self();
-		return $goal;
+		return new self();
 	}	 
 	
 	public static function constructWithAll($goalId, $userId, $startDate, $title, $description) {
