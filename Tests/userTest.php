@@ -5,7 +5,7 @@ require_once 'Logic/Classes/user.php';
 class UserTest extends PHPUnit_Framework_TestCase {
 
 	function testGetAgeCreateObject() {
-		$user = new User('Jens', 'Hansen', 'jhansen', 'jens@hansen.dk', 'Copenhagen', 'Denmark', 45, 'male', 'carpenter');
+		$user = new User(1, 'Jens', 'Hansen', 'jhansen', 'jens@hansen.dk', 'Copenhagen', 'Denmark', 45, 'male', 'carpenter');
 		$this->assertNotNull($user);
 	}
 
@@ -13,7 +13,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	 * Test getAge() method
 	 * */
 	function testGetAgeGetAge() {
-		$user = new User('Jens', 'Hansen', 'jhansen', 'jens@hansen.dk', 'Copenhagen', 'Denmark', 45, 'male', 'carpenter');
+		$user = new User(1, 'Jens', 'Hansen', 'jhansen', 'jens@hansen.dk', 'Copenhagen', 'Denmark', 45, 'male', 'carpenter');
 		$age = $user->getAge();
 		$this->assertEquals($age, 45);
 	}
@@ -22,7 +22,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	 * Test years left to live based on age and gender (male)
 	 */
 	function testGetAgeMale() {
-		$user = new User('Jens', 'Hansen', 'jhansen', 'jens@hansen.dk', 'Copenhagen', 'Denmark', 45, 'male', 'carpenter');
+		$user = new User(1, 'Jens', 'Hansen', 'jhansen', 'jens@hansen.dk', 'Copenhagen', 'Denmark', 45, 'male', 'carpenter');
 		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
 		$this->assertEquals($yearsLeftToLive, 29);
 	}
@@ -31,7 +31,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	 * Test years left to live based on age and gender (female)
 	 * */
 	function testGetAgeFemale() {
-		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner');
+		$user = new User(1, 'Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner');
 		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
 		$this->assertEquals($yearsLeftToLive, 33);
 	}
@@ -41,7 +41,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	 * @return false
 	 * */	
 	function testGetAgeLowAgeFalse() {
-		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 9, 'female', 'cleaner');
+		$user = new User(1, 'Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 9, 'female', 'cleaner');
 		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
 		$this->assertFalse($yearsLeftToLive);
 	}
@@ -51,27 +51,27 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	 * @return false
 	 * */
 	function testGetAgeHighAgeFalse() {
-		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 121, 'female', 'cleaner');
+		$user = new User(1, 'Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 121, 'female', 'cleaner');
 		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
 		$this->assertFalse($yearsLeftToLive);
 	}
 
 
 	function testNumberOfUnachievedGoals() {
-		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner');
+		$user = new User(1, 'Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner');
 		$numberOfUnachievedGoals = $user->numberOfUnachievedGoals(10, 4);
 		$this->assertEquals($numberOfUnachievedGoals, 6);
 	}
 
 
 	function testNumberOfUnachievedGoalsProcentage() {
-		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner');
+		$user = new User(1, 'Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner');
 		$number = $user->numberOfUnachievedGoalsProcentage(10, 4);
 		$this->assertEquals($number, 40);
 	}
 
 	function testFearFactor() {
-		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner');
+		$user = new User(1, 'Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner');
 
 		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
 		$numberOfUnachievedGoalsProcentage = $user->numberOfUnachievedGoalsProcentage(10, 4);
