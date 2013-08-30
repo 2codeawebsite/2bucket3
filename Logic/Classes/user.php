@@ -26,7 +26,7 @@ class User {
 		$this->$worktitle	= $worktitle;
 	}
 
-	public function getId() {
+	public function getUserId() {
 		return $this->id;
 	}
 
