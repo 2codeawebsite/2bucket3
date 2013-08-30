@@ -57,7 +57,7 @@ class Goal {
 	/*
 	 * Calculates the avarage number of goals of all the active users
 	 */
-	public function calcualteAvarageGoals() {
+	public static function calcualteAvarageGoals() {
 		// $numberOfTotalGoals = SELECT COUNT(goalId) FROM goal;
 		$numberOfTotalGoals = 1000;
 		// $numberOfUsers = SELECT COUNT(userId) FROM user WHERE (SELECT userId FROM goal WHERE COUNT(goalId) > 0);
