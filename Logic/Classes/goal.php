@@ -19,12 +19,13 @@ class Goal {
 	 */
 	 
 	public static function constructEmpty() {
-		$goal = new Goal();
+		$goal = new self();
 		return $goal;
 	}	 
 	
 	public static function constructWithAll($goalId, $userId, $startDate, $title, $description) {
-		$goal = new Goal();
+		$goal = new self();
+		
 		$goal->goalId 		= $goalId;
 		$goal->userId 		= $userId;
 		$goal->startDate 	= $startDate;
@@ -34,28 +35,10 @@ class Goal {
 		return $goal;
 	}
 	
-	public function getGoalId() {
-		return $this->goalId;
-	}
-	
-	public function getUserId() {
-		return $this->userId;
-	}
-	
-	public function getStartDate() {
-		return $this->startDate;
-	}
-	
-	public function getTitle() {
-		return $this->title;
-	}
-	
-	public function getDescription() {
-		return $this->description;
-	}
 	
 	/*
 	 * Calculates the avarage number of goals of all the active users
+	 * Function changed when the database is connected
 	 */
 	public static function calcualteAvarageGoals() {
 		// $numberOfTotalGoals = SELECT COUNT(goalId) FROM goal;
