@@ -8,12 +8,30 @@ class Goal {
 	private $title;
 	private $description;
 	
+	/*
 	public function __construct($goalId, $userId, $startDate, $title, $description) {
 		$this->goalId 		= $goalId;
 		$this->userId 		= $userId;
 		$this->startDate 	= $startDate;
 		$this->title 		= $title;
 		$this->description 	= $description;	
+	}
+	 */
+	 
+	public static function constructEmpty() {
+		$goal = new Goal();
+		return $goal;
+	}	 
+	
+	public static function constructWithAll($goalId, $userId, $startDate, $title, $description) {
+		$goal = new Goal();
+		$goal->goalId 		= $goalId;
+		$goal->userId 		= $userId;
+		$goal->startDate 	= $startDate;
+		$goal->title 		= $title;
+		$goal->goal 		= $goal;
+				
+		return $goal;
 	}
 	
 	public function getGoalId() {
