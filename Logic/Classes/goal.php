@@ -1,5 +1,7 @@
 <?php
 
+include_once $_SERVER['DOCUMENT_ROOT'].'/Logic/Database/queries.php';
+
 class Goal {
 	
 	private $goalId;
@@ -36,20 +38,61 @@ class Goal {
 	
 	
 	/*
-	 * Calculates the avarage number of goals of all the active users
-	 * Function changed when the database is connected
+	 * Requirement no. 9
+	 * Calculates the avarage number of goals of all the users
+	 * NB!: Function changed when the database is connected
 	 * 
 	 * @return double
 	 */
 	public static function calculateAvarageGoals() {
-		// $numberOfTotalGoals = SELECT COUNT(goalId) FROM goal;
+		/*
+		 * To be excluded when the database is connected 
+		 */
 		$numberOfTotalGoals = 1000;
-		// $numberOfUsers = SELECT COUNT(userId) FROM user;
 		$numberOfUsers = 333;
 		
+		/*
+		 * To be included when the database has been connected
+		 * 
+		$instance = new Queries();
+		$result = $instance->getAvarageGoals();
+		while ($row = $result->fetch_object()) {
+			$numberOfTotalGoals = $row->Goals;
+			$numberOfUsers = $row->Users;
+		}
+		*/
+		
 		$result = $numberOfTotalGoals / $numberOfUsers;
+		
 		return number_format($result, 2, ",", ".");
 		
+	}
+	
+	
+	/*
+	 * Requirement no. 7
+	 * This method runs when a user has achieved a goal
+	 * NB!: Method changed when a database is implemented
+	 * 
+	 * @return: boolian
+	 */
+	public static function markGoalAsAchieved($goalId) {
+		
+		$result = FALSE;
+		/*
+		 * To be excluded when the database has been implemented
+		 * */
+		$result = TRUE;
+		
+		/*
+		 * To be included when the database has been implemented
+		 * 
+		$instance = new Queries();
+		$result = $instance->markGoalAsAchieved($goalId);
+		if($result) $result = TRUE;
+		*/
+		
+		return $result;
 	}
 	
 	
