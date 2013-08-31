@@ -38,14 +38,18 @@ class Goal {
 	/*
 	 * Calculates the avarage number of goals of all the active users
 	 * Function changed when the database is connected
+	 * 
+	 * @return double
 	 */
-	public static function calcualteAvarageGoals() {
+	public static function calculateAvarageGoals() {
 		// $numberOfTotalGoals = SELECT COUNT(goalId) FROM goal;
 		$numberOfTotalGoals = 1000;
-		// $numberOfUsers = SELECT COUNT(userId) FROM user WHERE (SELECT userId FROM goal WHERE COUNT(goalId) > 0);
-		$numberOfUsers = 100;
+		// $numberOfUsers = SELECT COUNT(userId) FROM user;
+		$numberOfUsers = 333;
 		
-		return $numberOfTotalGoals / $numberOfUsers;
+		$result = $numberOfTotalGoals / $numberOfUsers;
+		return number_format($result, 2, ",", ".");
+		
 	}
 	
 	
