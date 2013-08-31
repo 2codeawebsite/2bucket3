@@ -26,12 +26,12 @@ class GoalTest extends PHPUnit_Framework_TestCase {
 	
 	public function testCalculateAvarageGoals() {
 		$count = Goal::calculateAvarageGoals();
-		$this->assertEquals($count, 3,33);
+		$this->assertEquals($count, 3.33);
 	}
 	
 	public function testMarkGoalAsAchieved() {
 		$result = Goal::markGoalAsAchieved(3);
-		$this->assertEquals($result, TRUE);
+		$this->assertTrue($result);
 	}
 	
 	

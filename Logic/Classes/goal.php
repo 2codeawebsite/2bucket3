@@ -64,7 +64,7 @@ class Goal {
 		
 		$result = $numberOfTotalGoals / $numberOfUsers;
 		
-		return number_format($result, 2, ",", ".");
+		return number_format($result, 2, ".", "");
 		
 	}
 	
