@@ -48,8 +48,8 @@ class Goal {
 		/*
 		 * To be excluded when the database is connected 
 		 */
-		$numberOfTotalGoals = 1000;
-		$numberOfUsers = 333;
+		$numberOfTotalGoals = 10;
+		$numberOfUsers = 3;
 		
 		/*
 		 * To be included when the database has been connected
@@ -64,7 +64,7 @@ class Goal {
 		
 		$result = $numberOfTotalGoals / $numberOfUsers;
 		
-		return number_format($result, 2, ".", "");
+		return $result;//number_format($result, 2, ".", "");
 		
 	}
 	
