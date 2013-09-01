@@ -13,7 +13,7 @@ class Queries {
 	
 	public function markGoalAsAchieved($goalId) {
 		$con = new Connection();
-		$result = $con->run_query('UPDATE goal SET goalStatus = 1 WHERE userId = "' . $goalId . '"');
+		$result = $con->run_query('UPDATE goal SET goalStatus = 1 WHERE goalId = "' . $goalId . '"');
 		//$con->close_connection($con);
 		return $result;
 	}
