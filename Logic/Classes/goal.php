@@ -6,6 +6,7 @@ class Goal {
 	
 	private $goalId;
 	private $userId;
+	private $goalId;
 	private $startDate;
 	private $title;
 	private $description;
@@ -24,11 +25,12 @@ class Goal {
 		return new self();
 	}	 
 	
-	public static function constructWithAll($goalId, $userId, $startDate, $title, $description) {
+	public static function constructWithAll($goalId, $userId, $goalId, $startDate, $title, $description) {
 		$goal = new self();
 		
 		$goal->goalId 		= $goalId;
 		$goal->userId 		= $userId;
+		$goal->goalId		= $goalId;
 		$goal->startDate 	= $startDate;
 		$goal->title 		= $title;
 		$goal->goal 		= $goal;
