@@ -24,10 +24,10 @@ if(
 	$worktitle = $_POST['worktitle'];
 	$password = $_POST['password'];
 	
-	$user = new user($firstname ,$lastname,$username,$email,$city,$country,$age,$gender,$worktitle,$password);
+	$user = new user($firstname, $lastname, $username, $email, $city, $country, $age, $gender, $worktitle, $password);
 	$qry = new queries();
-	if($qry->createuser($user)){
-		$qry->createuser($user);
+	//$qry->createUser($user);
+	if($qry->createUser($user)){
 		header('Location: index.php');
 	}else{
 		header('Location: createuser.php');

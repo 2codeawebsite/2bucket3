@@ -11,9 +11,10 @@ class User {
 	private $country;
 	private $age;
 	private $gender;
-	private $worktitle;	
+	private $worktitle;
+	private $password;
 
-	public function __construct($first_name, $last_name, $username, $email, $city, $country, $age, $gender, $worktitle) {	
+	public function __construct($first_name, $last_name, $username, $email, $city, $country, $age, $gender, $worktitle, $password) {	
 		$this->first_name 	= $first_name;
 		$this->last_name 	= $last_name;
 		$this->username 	= $username;
@@ -23,6 +24,11 @@ class User {
 		$this->age			= $age;
 		$this->gender		= $gender;
 		$this->$worktitle	= $worktitle;
+		$this->$password	= $password;
+	}
+
+	public function getInstance() {
+		 return new self(); 
 	}
 
 	public function getUserId() {
@@ -33,7 +39,7 @@ class User {
 		return $this->first_name;
 	}
 
-	public function getLatName() {
+	public function getLastName() {
 		return $this->last_name;
 	}
 
@@ -62,9 +68,12 @@ class User {
 	}
 
 	public function getWorktitle() {
-		return $this->$worktitle;
+		return $this->worktitle;
 	}
 
+	public function getPassword() {
+		return $this->password;
+	}
 
 
 	public function calculateYeasLeftToLive($age, $gender) {
