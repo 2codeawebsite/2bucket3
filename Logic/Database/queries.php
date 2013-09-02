@@ -1,6 +1,6 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT'].'/Logic/Database/connection.php';
+include_once '/Logic/Database/connection.php';
 
 class Queries {
 	
@@ -17,6 +17,22 @@ class Queries {
 		//$con->close_connection($con);
 		return $result;
 	}
+	
+	public function createUser($user){
+		$con = new Connection();
+		$result = $con->run_query('INSERT INTO users VALUES ('.$user->$firstname.','. $user->$lastname.','. $user->$username.','. $user->$email.','.
+		$user->$city.','. $user->$country.','. $user->$age.','. $user->$gender.','. $user->worktitle.','. $user->$password.')');
+		
+	}
+	
+	public function loginAuth($username, $password){
+		$con = new Connection();
+		$result = $con->run_query('SELECT * FROM user WHERE '.$username.' = username AND '.$password.'=password');
+		if($result == TRUE){
+			return TRUE;
+		}else{
+			return FALSE;
+		}	
+	}
 }
-
 ?>

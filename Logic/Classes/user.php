@@ -13,8 +13,7 @@ class User {
 	private $gender;
 	private $worktitle;	
 
-	public function __construct($id, $first_name, $last_name, $username, $email, $city, $country, $age, $gender, $worktitle) {
-		$this->id 			= $id;	
+	public function __construct($first_name, $last_name, $username, $email, $city, $country, $age, $gender, $worktitle) {	
 		$this->first_name 	= $first_name;
 		$this->last_name 	= $last_name;
 		$this->username 	= $username;
