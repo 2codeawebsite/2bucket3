@@ -19,12 +19,12 @@ class User {
 		$this->last_name 	= $last_name;
 		$this->username 	= $username;
 		$this->email 		= $email;
-		$this->city			= $city;
+		$this->city		= $city;
 		$this->country		= $country;
-		$this->age			= $age;
+		$this->age		= $age;
 		$this->gender		= $gender;
 		$this->worktitle	= $worktitle;
-		$this->password	= $password;
+		$this->password		= $password;
 	}
 
 	public function getInstance() {
