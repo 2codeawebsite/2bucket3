@@ -24,13 +24,13 @@ class Queries {
 		//echo $var;
 		//die();
 		$con = new Connection();
-		//$result = $con->run_query('INSERT INTO user VALUES (NULL,"'.$user->getFirstName().'","'. $user->getLastName().'","'. $user->getUserName().'","'. $user->getEmail().'","'.
-		//$user->getCity().'","'. $user->getCountry().'","'. $user->getAge().'","'. $user->getGender().'","'. $user->getWorktitle().'","'. $user->getPassword().'")');
-		$str = ('INSERT INTO user VALUES ("",NULL,"'.$user->getFirstName().'","'. $user->getLastName().'","'. $user->getUserName().'","'. $user->getEmail().'","'.
+		$result = $con->run_query('INSERT INTO user VALUES ("",NULL,"'.$user->getFirstName().'","'. $user->getLastName().'","'. $user->getUserName().'","'. $user->getEmail().'","'.
 		$user->getCity().'","'. $user->getCountry().'","'. $user->getAge().'","'. $user->getGender().'","'. $user->getWorktitle().'","'. $user->getPassword().'")');
+		//$str = ('INSERT INTO user VALUES ("",NULL,"'.$user->getFirstName().'","'. $user->getLastName().'","'. $user->getUserName().'","'. $user->getEmail().'","'.
+		//$user->getCity().'","'. $user->getCountry().'","'. $user->getAge().'","'. $user->getGender().'","'. $user->getWorktitle().'","'. $user->getPassword().'")');
 		//$str = $user->getWorktitle();
-		echo $str;
-		die();
+		//echo $str;
+		//die();
 	}
 	
 	public function loginAuth($username, $password){

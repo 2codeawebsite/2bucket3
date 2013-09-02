@@ -23,8 +23,8 @@ class User {
 		$this->country		= $country;
 		$this->age			= $age;
 		$this->gender		= $gender;
-		$this->$worktitle	= $worktitle;
-		$this->$password	= $password;
+		$this->worktitle	= $worktitle;
+		$this->password	= $password;
 	}
 
 	public function getInstance() {
