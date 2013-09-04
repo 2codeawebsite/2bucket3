@@ -3,6 +3,7 @@
 class User {
 
 	private $id;
+	
 	private $first_name;
 	private $last_name;
 	private $username;
@@ -19,9 +20,9 @@ class User {
 		$this->last_name 	= $last_name;
 		$this->username 	= $username;
 		$this->email 		= $email;
-		$this->city		= $city;
+		$this->city			= $city;
 		$this->country		= $country;
-		$this->age		= $age;
+		$this->age			= $age;
 		$this->gender		= $gender;
 		$this->worktitle	= $worktitle;
 		$this->password		= $password;
