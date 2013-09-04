@@ -1,5 +1,7 @@
 <?php
 
+//require_once 'Logic/Database/queries.php';
+
 class User {
 
 	private $id;
@@ -132,6 +134,7 @@ class User {
 
 		return $result;
 	}
+
 }
 
 ?>
