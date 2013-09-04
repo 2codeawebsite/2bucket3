@@ -73,11 +73,13 @@ class User {
 		$avg_max_age_male = 74;
 		$avg_max_age_female = 78;
 
-		if ($age >= 10 && $age < 120) {
-			if ($gender == 'male') {
-				return $avg_max_age_male - $age;
-			} else if ($gender == 'female') {
-				return $avg_max_age_female - $age;
+		if ($age >= 10) {
+			if ($age <= 120) {
+				if ($gender == 'male') {
+					return $avg_max_age_male - $age;
+				} else if ($gender == 'female') {
+					return $avg_max_age_female - $age;
+				}
 			} else {
 				return false;
 			}

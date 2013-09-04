@@ -6,7 +6,7 @@ class Queries {
 	
 	public function getAvarageGoals() {
 		$con = new Connection();
-		$result = $con->run_query('SELECT (SELECT COUNT(goalId) FROM goal) AS Goals, (SELECT COUNT(userId) FROM user) AS Users');
+		$result = $con->run_query('SELECT (SELECT COUNT(ID) FROM goal) AS Goals, (SELECT COUNT(ID) FROM user) AS Users');
 		//$con->close_connection($con);
 		return $result;
 	}
