@@ -29,8 +29,8 @@ class Queries {
 	
 	public function loginAuth($username, $password){
 		$con = new Connection();
-		$result = $con->run_query('SELECT * FROM user WHERE '.$username.' = username AND '.$password.'=password');
-		if($result == TRUE){
+		$result = $con->run_query('SELECT * FROM user WHERE username ="'.$username.'" AND password="'.$password.'"');
+		if($result){
 			return TRUE;
 		}else{
 			return FALSE;
