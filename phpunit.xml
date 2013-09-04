@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="Tests/bootstrap.php" colors="true">
+<phpunit bootstrap="Logic/Classes/bootstrap.php" colors="true">
 
     <testsuites>
         <testsuite name="Test1 Tests">
-            <directory>./Tests/</directory>
+            <directory>./Logic/Classes/</directory>
         </testsuite>
     </testsuites>
 
@@ -12,7 +12,7 @@
         <whitelist>
             <directory>./</directory>
             <exclude>
-                <directory>./Tests</directory>
+                <directory>./Logic/Classes</directory>
             </exclude>
         </whitelist>
     </filter>
