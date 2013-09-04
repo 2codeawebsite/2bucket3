@@ -20,17 +20,11 @@ class Queries {
 	}
 	
 	public function createUser($user){
-		//$var = $user->getFirstName();
-		//echo $var;
-		//die();
 		$con = new Connection();
 		$result = $con->run_query('INSERT INTO user VALUES ("",NULL,"'.$user->getFirstName().'","'. $user->getLastName().'","'. $user->getUserName().'","'. $user->getEmail().'","'.
 		$user->getCity().'","'. $user->getCountry().'","'. $user->getAge().'","'. $user->getGender().'","'. $user->getWorktitle().'","'. $user->getPassword().'")');
-		//$str = ('INSERT INTO user VALUES ("",NULL,"'.$user->getFirstName().'","'. $user->getLastName().'","'. $user->getUserName().'","'. $user->getEmail().'","'.
-		//$user->getCity().'","'. $user->getCountry().'","'. $user->getAge().'","'. $user->getGender().'","'. $user->getWorktitle().'","'. $user->getPassword().'")');
-		//$str = $user->getWorktitle();
-		//echo $str;
-		//die();
+
+		return $result;
 	}
 	
 	public function loginAuth($username, $password){

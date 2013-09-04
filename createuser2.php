@@ -1,4 +1,7 @@
 <?php 
+
+session_start();
+
 require_once '\Logic\Classes\user.php';
 require_once '\Logic\Database\queries.php';
 if(
@@ -26,8 +29,9 @@ if(
 	
 	$user = new user($firstname, $lastname, $username, $email, $city, $country, $age, $gender, $worktitle, $password);
 	$qry = new queries();
-	//$qry->createUser($user);
+
 	if($qry->createUser($user)){
+		$_SESSION['user_created'] = 'The user has been created';
 		header('Location: index.php');
 	}else{
 		header('Location: createuser.php');
