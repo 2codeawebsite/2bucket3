@@ -28,7 +28,7 @@ if(
 	$password = $_POST['password'];
 	
 	$user = new user($firstname, $lastname, $username, $email, $city, $country, $age, $gender, $worktitle, $password);
-	$qry = new queries();
+	$qry = new Queries();
 
 	if($qry->createUser($user)){
 		$_SESSION['user_created'] = 'The user has been created';
