@@ -1,6 +1,6 @@
 <?php
 
-//include_once $_SERVER['DOCUMENT_ROOT'].'/Logic/Database/queries.php';
+include_once 'db_queries.php';
 
 class Goal {
 	

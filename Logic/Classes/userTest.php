@@ -1,6 +1,8 @@
 <?php 
 
 require_once 'user.php';
+require_once 'db_connection.php';
+require_once 'db_queries.php';
 
 
 class UserTest extends PHPUnit_Framework_TestCase {
@@ -81,6 +83,13 @@ class UserTest extends PHPUnit_Framework_TestCase {
 		$fearFactor = strval ($user->fearFactor($yearsLeftToLive, $numberOfUnachievedGoalsProcentage));
 
 		$this->assertEquals($fearFactor, '1.862');
+	}
+	
+	function testCreateNewUser() {
+		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner', '1234');
+		$qry = new Queries();
+		$result = $qry->createUser($user);
+		$this->assertTrue($result);
 	}
 
 }
