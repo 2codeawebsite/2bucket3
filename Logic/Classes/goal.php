@@ -11,19 +11,34 @@ class Goal {
 	private $description;
 	
 	/*
-	public function __construct($goalId, $userId, $startDate, $title, $description) {
+	 * With this type of constructor we are able to do method overload. 
+	 * In PHP it is not possible to have multiple constructors like in Java 
+	 */
+	public function __construct() {
+		$argv = func_get_args();
+	        switch( func_num_args() ) {
+	            case 1:
+	                self::__construct1();
+	                break;
+	            case 2:
+	                self::__construct2( $argv[0], $argv[1], $argv[2], $argv[3], $argv[4] );
+	         }
+	}
+	
+	public function __construct1() {}
+	
+	public function __construct2($goalId, $userId, $startDate, $title, $description) {
 		$this->goalId 		= $goalId;
 		$this->userId 		= $userId;
 		$this->startDate 	= $startDate;
 		$this->title 		= $title;
 		$this->description 	= $description;	
 	}
-	 */
 	 
-	public static function constructEmpty() {
+	public static function constructGoal() {
 		return new self();
 	}	 
-	
+	/*
 	public static function constructWithAll($goalId, $userId, $startDate, $title, $description) {
 		$goal = new self();
 		
@@ -35,7 +50,7 @@ class Goal {
 				
 		return $goal;
 	}
-	
+	*/
 	
 	/*
 	 * Requirement no. 9
@@ -44,7 +59,7 @@ class Goal {
 	 * 
 	 * @return double
 	 */
-	public static function calculateAvarageGoals() {
+	public function calculateAvarageGoals() {
 		/*
 		 * To be excluded when the database is connected 
 		 */
@@ -76,7 +91,7 @@ class Goal {
 	 * 
 	 * @return: boolian
 	 */
-	public static function markGoalAsAchieved($goalId) {
+	public function markGoalAsAchieved($goalId) {
 		
 		$result = FALSE;
 		/*
