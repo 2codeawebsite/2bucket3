@@ -7,9 +7,11 @@ class Queries {
 	
 	public function getAvarageGoals() {
 		$con = new Connection();
-		$result = $con->run_query('SELECT (SELECT COUNT(ID) FROM goal) AS Goals, (SELECT COUNT(ID) FROM user) AS Users');
-		//$con->close_connection($con);
-		return $result;
+		$result = $con->run_query('SELECT (SELECT COUNT(ID) FROM goal) / (SELECT COUNT(ID) FROM user)');
+		while ($row = $result->fetch_row()) {
+        	$avgGoals = $row[0];
+    	}
+		return $avgGoals;
 	}
 	
 	public function markGoalAsAchieved($goalId) {

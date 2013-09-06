@@ -27,11 +27,6 @@ class GoalTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(sizeof($array), 2);
 	}
 	
-	public function testCalculateAvarageGoals() {
-		$goal = new Goal();
-		$count = $goal->calculateAvarageGoals();
-		$this->assertEquals($count, 3.33);
-	}
 	
 	public function testMarkGoalAsAchieved() {
 		$goal = new Goal();

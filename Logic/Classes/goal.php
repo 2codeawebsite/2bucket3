@@ -34,10 +34,7 @@ class Goal {
 		$this->title 		= $title;
 		$this->description 	= $description;	
 	}
-	 
-	public static function constructGoal() {
-		return new self();
-	}	 
+	  
 	/*
 	public static function constructWithAll($goalId, $userId, $startDate, $title, $description) {
 		$goal = new self();
@@ -53,31 +50,13 @@ class Goal {
 	*/
 	
 	/*
-	 * Requirement no. 9
-	 * Calculates the avarage number of goals of all the users
-	 * NB!: Function changed when the database is connected
-	 * 
+	 * Requirement no. 9 
 	 * @return double
 	 */
 	public function calculateAvarageGoals() {
-		/*
-		 * To be excluded when the database is connected 
-		 */
-		$numberOfTotalGoals = 10;
-		$numberOfUsers = 3;
 		
-		/*
-		 * To be included when the database has been connected
-		 * 
-		$instance = new Queries();
-		$result = $instance->getAvarageGoals();
-		while ($row = $result->fetch_object()) {
-			$numberOfTotalGoals = $row->Goals;
-			$numberOfUsers = $row->Users;
-		}
-		*/
-		
-		$result = $numberOfTotalGoals / $numberOfUsers;
+		$qry = new Queries();
+		$result = $qry->getAvarageGoals();
 		
 		return number_format($result, 2);
 		
