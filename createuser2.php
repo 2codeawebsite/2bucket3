@@ -3,7 +3,8 @@
 session_start();
 
 require_once '\Logic\Classes\user.php';
-require_once '\Logic\Database\queries.php';
+require_once '\Logic\Classes\db_queries.php';
+
 if(
 	isset($_POST['firstname']) && !empty($_POST['firstname']) &&
 	isset($_POST['lastname']) && !empty($_POST['lastname']) &&
@@ -29,10 +30,16 @@ if(
 	
 	$user = new user($firstname, $lastname, $username, $email, $city, $country, $age, $gender, $worktitle, $password);
 	$qry = new Queries();
+	$result = $qry->createUser($user);
 
-	if($qry->createUser($user)){
-		$_SESSION['user_created'] = 'The user has been created';
-		header('Location: index.php');
+	if($result){
+		//$userId = $qry->getUserId($user->username);
+		if($qry->createBucketList($result, "Life long", "The life long bucket list")) {
+			$_SESSION['user_created'] = 'The user has been created';
+		} else {
+			$_SESSION['user_created'] = 'The bucket list was NOT created!';
+		}
+		//header('Location: index.php');
 	}else{
 		header('Location: createuser.php');
 	}
