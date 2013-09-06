@@ -21,15 +21,31 @@ class Queries {
 	
 	public function createUser($user){
 		$con = new Connection();
-		$result = $con->run_query('INSERT INTO user VALUES ("",NULL,"'.$user->getFirstName().'","'. $user->getLastName().'","'. $user->getUserName().'","'. $user->getEmail().'","'.
+		$result = $con->run_query('INSERT INTO user VALUES (NULL,"'.$user->getFirstName().'","'. $user->getLastName().'","'. $user->getUserName().'","'. $user->getEmail().'","'.
 		$user->getCity().'","'. $user->getCountry().'","'. $user->getAge().'","'. $user->getGender().'","'. $user->getWorktitle().'","'. $user->getPassword().'")');
-
+		
 		return $result;
 	}
 	
 	public function loginAuth($username, $password){
 		$con = new Connection();
 		$result = $con->run_query('SELECT * FROM user WHERE username ="'.$username.'" AND password="'.$password.'"');
+		if($result){
+			return TRUE;
+		}else{
+			return FALSE;
+		}	
+	}
+
+	public function getUserId($username) {
+		$con = new Connection();
+		$result = $con->run_query('SELECT * FROM user WHERE username ="'.$username.'"');
+		return $result;
+	}
+	
+	public function createBucketList($userId, $title, $description) {
+		$con = new Connection();
+		$result = $con->run_query('INSERT INTO list VALUES ('.$userId.', "'.$title.'", "'.$description.'")');
 		if($result){
 			return TRUE;
 		}else{
