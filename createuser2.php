@@ -31,16 +31,18 @@ if(
 	$user = new user($firstname, $lastname, $username, $email, $city, $country, $age, $gender, $worktitle, $password);
 	$qry = new Queries();
 	$result = $qry->createUser($user);
-
+	
 	if($result){
-		//$userId = $qry->getUserId($user->username);
-		if($qry->createBucketList($result, "Life long", "The life long bucket list")) {
-			$_SESSION['user_created'] = 'The user has been created';
-		} else {
-			$_SESSION['user_created'] = 'The bucket list was NOT created!';
+		$userId = $qry->getUserId($username);
+		if($userId) {
+			if($qry->createBucketList($userId, "Lifelong", "This is the lifelong bucket list")) {
+				$_SESSION['user_created'] = 'The user and the bucket list has been created';
+			} else {
+				$_SESSION['user_created'] = 'The user has been created and the bucket list was NOT created!';
+			}	
 		}
-		//header('Location: index.php');
-	}else{
+		header('Location: index.php');
+	} else{
 		header('Location: createuser.php');
 	}
 	

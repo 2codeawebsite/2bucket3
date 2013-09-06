@@ -21,36 +21,33 @@ class Queries {
 	
 	public function createUser($user){
 		$con = new Connection();
-		$result = $con->run_query('INSERT INTO user VALUES (NULL,"'.$user->getFirstName().'","'. $user->getLastName().'","'. $user->getUserName().'","'. $user->getEmail().'","'.
-		$user->getCity().'","'. $user->getCountry().'","'. $user->getAge().'","'. $user->getGender().'","'. $user->getWorktitle().'","'. $user->getPassword().'")');
-		
+		$result = $con->run_query('INSERT INTO user (`facebook_id`, `first_name`, `last_name`, `username`, 
+			`email`, `city`, `country`, `age`, `gender`, `worktitle`, `password`) 
+			VALUES (NULL,"'.$user->getFirstName().'","'. $user->getLastName().'","'. $user->getUserName().'",
+			"'. $user->getEmail().'","'.$user->getCity().'","'. $user->getCountry().'","'. $user->getAge().'",
+			"'. $user->getGender().'","'. $user->getWorktitle().'","'. $user->getPassword().'")');
 		return $result;
 	}
 	
 	public function loginAuth($username, $password){
 		$con = new Connection();
-		$result = $con->run_query('SELECT * FROM user WHERE username ="'.$username.'" AND password="'.$password.'"');
-		if($result){
-			return TRUE;
-		}else{
-			return FALSE;
-		}	
+		$con->run_query('SELECT * FROM user WHERE username ="'.$username.'" AND password="'.$password.'"');	
 	}
 
 	public function getUserId($username) {
 		$con = new Connection();
-		$result = $con->run_query('SELECT * FROM user WHERE username ="'.$username.'"');
-		return $result;
+		$result = $con->run_query('SELECT `ID` FROM user WHERE username ="'.$username.'"');
+		while ($row = $result->fetch_row()) {
+        	$userId = $row[0];
+    	}
+		return $userId;
 	}
 	
 	public function createBucketList($userId, $title, $description) {
 		$con = new Connection();
-		$result = $con->run_query('INSERT INTO list VALUES ('.$userId.', "'.$title.'", "'.$description.'")');
-		if($result){
-			return TRUE;
-		}else{
-			return FALSE;
-		}	
+		$result = $con->run_query('INSERT INTO list (`user_id`, `name`, `description`) 
+			VALUES ("'.$userId.'", "'.$title.'", "'.$description.'")');	
+		return $result;
 	}
 }
 ?>
