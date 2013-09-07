@@ -21,18 +21,48 @@ class Goal {
 	                self::__construct1();
 	                break;
 	            case 2:
-	                self::__construct2( $argv[0], $argv[1], $argv[2], $argv[3], $argv[4] );
+	                self::__construct2( $argv[0], $argv[1], $argv[2], $argv[3] );
+					break;
+				case 3:
+	                self::__construct3( $argv[0], $argv[1], $argv[2], $argv[3], $argv[4] );
 	         }
 	}
 	
 	public function __construct1() {}
 	
-	public function __construct2($goalId, $userId, $startDate, $title, $description) {
+	public function __construct2($userId, $startDate, $title, $description) {
+		$this->userId 		= $userId;
+		$this->startDate 	= $startDate;
+		$this->title 		= $title;
+		$this->description 	= $description;	
+	}
+	
+	public function __construct3($goalId, $userId, $startDate, $title, $description) {
 		$this->goalId 		= $goalId;
 		$this->userId 		= $userId;
 		$this->startDate 	= $startDate;
 		$this->title 		= $title;
 		$this->description 	= $description;	
+	}
+	
+	public function getGoalId() {
+		return $this->goalId;
+	}
+	
+	public function getUserId() {
+		return $this->userId;
+	}
+	
+	public function getStartDate() {
+		return $this->startDate;
+	}
+	
+	public function getTitle() {
+		return $this->title;
+	}
+	
+	public function getDescription() {
+		return $this->description;
 	}
 	  
 	/*
@@ -48,6 +78,17 @@ class Goal {
 		return $goal;
 	}
 	*/
+	
+	public static function constructGoal($userId, $startDate, $title, $description) {
+		$goal = new self();
+		
+		$goal->userId 		= $userId;
+		$goal->startDate 	= $startDate;
+		$goal->title 		= $title;
+		$goal->goal 		= $goal;
+				
+		return $goal;
+	}
 	
 	/*
 	 * Requirement no. 9 

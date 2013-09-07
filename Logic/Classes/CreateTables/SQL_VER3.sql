@@ -1,12 +1,18 @@
--- SET CHARSET 'UTF8';
 -- CREATE USER 'bucket'@'localhost' IDENTIFIED BY '1234';
 -- DROP DATABASE IF EXISTS bucket_db;
 -- CREATE DATABASE bucket_db;
+
+-- ----------------------------------------------------
+-- Drop views and tables
+-- ----------------------------------------------------
+DROP VIEW IF EXISTS all_on_user;
 
 DROP TABLE IF EXISTS `bucket_db`.`goalList` ;
 DROP TABLE IF EXISTS `bucket_db`.`list` ;
 DROP TABLE IF EXISTS `bucket_db`.`goal` ;
 DROP TABLE IF EXISTS `bucket_db`.`user` ;
+
+SET CHARSET 'UTF8';
 
 -- -----------------------------------------------------
 -- Table `bucket_db`.`user`
@@ -45,7 +51,7 @@ CREATE  TABLE IF NOT EXISTS `bucket_db`.`goal` (
   `user_id` INT NOT NULL ,
   `start_date` DATE NOT NULL ,
   `title` VARCHAR(255) NOT NULL ,
-  `descritpion` TEXT NULL ,
+  `description` TEXT NULL ,
   PRIMARY KEY (`ID`) ,
   INDEX `user_id` (`user_id` ASC) ,
   CONSTRAINT `user_id_1`
@@ -119,3 +125,24 @@ INSERT INTO `bucket_db`.`goalList` VALUES (4, 4, 2);
 INSERT INTO `bucket_db`.`goalList` VALUES (5, 5, 2);
 INSERT INTO `bucket_db`.`goalList` VALUES (6, 1, 6);
 INSERT INTO `bucket_db`.`goalList` VALUES (7, 2, 3);
+
+
+
+-- ---------------------------------------------------------
+-- CREATION OF VIEWS
+-- ---------------------------------------------------------
+
+-- -------------------------------------------------
+-- View all_on_user. Here the user, goal and list tables are joind where list name and goal title are not empty
+-- -------------------------------------------------
+
+CREATE VIEW all_on_user AS
+	SELECT distinct u.ID AS user_id, u.first_name, u.last_name, u.username, u.email, u.city, u.country, u.age, u.gender, u.worktitle,
+	        l.name AS list_name, l.description AS list_description, 
+	        g.title AS goal_title, g.description AS goal_description, g.start_date 
+	    FROM user u
+	    INNER JOIN list l 
+	        ON u.ID = l.user_id
+	    INNER JOIN goal g 
+	        ON u.Id = g.user_id
+	WHERE l.name <> '' AND g.title <> ''
