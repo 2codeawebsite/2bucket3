@@ -24,7 +24,7 @@
 require_once 'Logic/Classes/goal.php';
 
 $goal = new Goal();
-echo 'The avarage number of goals per user is: '.$goal->calculateAvarageGoals();
+echo 'The avarage number of goals per user is now: '.$goal->calculateAvarageGoals();
 
 ?>
 </body>
