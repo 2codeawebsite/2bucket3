@@ -50,7 +50,7 @@ if (mysqli_multi_query($link, $commands)) {
 }
 
 echo '<pre>';
-echo $commands;
+echo $theData;
 
 /* close connection */
 mysqli_close($link);
