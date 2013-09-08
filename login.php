@@ -6,11 +6,11 @@
 
 	<body>
 		<div>
-			<form action="loginauth.php" method="POST"></form>
+			<form action="loginauth.php" method="POST">
 			Username:<input type="text" name="username">
 			Password:<input type="text" name="password">
 			<input type="submit" value="Login">
-			<br>
+			</form>
 		</div>
 	</body>
 

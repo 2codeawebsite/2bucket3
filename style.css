@@ -1,4 +1,38 @@
-   .button {
+html,body {
+    margin:0px;
+}
+#header {
+    position:relative;
+    background-color:#3d3d3d;
+    color:#fff;
+}
+
+#header .menu {
+    list-style:none;
+    padding:0px;
+    margin:0px;
+}
+#header .menu li {
+    display:inline;
+}
+#header .menu li a {
+    display:block;
+    float:left;
+    padding:10px;
+    color:#fff;
+    text-decoration:none;
+}
+#header .container {
+    width:900px;
+    margin:0 auto;
+}
+
+
+
+/* Clear */
+.clearB { clear:both; }
+
+.button {
     font: bold 20px Arial;
     width:150px;
     text-align:center;
@@ -10,4 +44,4 @@
     border-right: 1px solid #333333;
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
-   }
+}
