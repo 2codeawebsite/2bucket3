@@ -1,29 +1,28 @@
-<?php @require('header.php'); ?>
-	<center>
+<?php 
+require_once 'Logic/Classes/goal.php';
+require('header.php');
+$goal = new Goal(); ?>
 	<?php
 		if($_SESSION['user_created']) {
 			echo "<strong>" . $_SESSION['user_created'] . "</strong>";
 			//$_SESSION['user_created'] = NULL;
 		}
 	
-	?> 
-	<?php
-	
-		require_once 'Logic/Classes/goal.php';
-		
-		$goal = new Goal();
-		echo 'The avarage number of goals per user is now: '.$goal->calculateAvarageGoals();
-		echo '</center>';
-		echo '<hr>';
-		
-		require_once '\Logic\Classes\db_queries.php';
-		
-		$qry = new Queries();
-		$result = $qry->getAllOnUsers();
-		echo '<pre>';
-		print_r($result);
-	
 	?>
+	<div id="spacer">
+	    <div class="average">
+	        Each user has <br>an average of
+	        <h1><?php echo $goal->calculateAvarageGoals(); ?></h1>
+	        goals to achieve!<br>
+	    </div>
+	</div>
+	<div id="site">
+	    <h2>Newest goals</h2>
+	    <?php
+	       
+	    ?>
+	</div>
+	
 </body>
 
 </html> 
