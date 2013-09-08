@@ -5,7 +5,7 @@
 -- ----------------------------------------------------
 -- Drop views and tables
 -- ----------------------------------------------------
-DROP VIEW IF EXISTS all_on_user;
+DROP VIEW IF EXISTS `bucket_db`.`all_on_user`;
 
 DROP TABLE IF EXISTS `bucket_db`.`goalList` ;
 DROP TABLE IF EXISTS `bucket_db`.`list` ;
@@ -52,6 +52,7 @@ CREATE  TABLE IF NOT EXISTS `bucket_db`.`goal` (
   `start_date` DATE NOT NULL ,
   `title` VARCHAR(255) NOT NULL ,
   `description` TEXT NULL ,
+  `achieved` INT NOT NULL ,
   PRIMARY KEY (`ID`) ,
   INDEX `user_id` (`user_id` ASC) ,
   CONSTRAINT `user_id_1`
@@ -61,12 +62,12 @@ CREATE  TABLE IF NOT EXISTS `bucket_db`.`goal` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO `bucket_db`.`goal` VALUES (1, 1, '2013-08-01', 'Travel to Italy', 'Say hi to the pobe and swim in the lake of souls');
-INSERT INTO `bucket_db`.`goal` VALUES (2, 1, '2013-08-02', 'Take driver license to motorbike', '...so I can ride into the sunset');
-INSERT INTO `bucket_db`.`goal` VALUES (3, 3, '2013-08-22', 'Kill a spider', 'I hate them');
-INSERT INTO `bucket_db`.`goal` VALUES (4, 2, '2013-09-01', 'Travel to Italy', 'Say hi to the pobe and swim in the lake of souls');
-INSERT INTO `bucket_db`.`goal` VALUES (5, 2, '2013-09-01', 'Travel to Spain', 'Say hi');
-INSERT INTO `bucket_db`.`goal` VALUES (6, 2, '2013-09-01', 'Travel to Australia', 'Say hi');
+INSERT INTO `bucket_db`.`goal` VALUES (1, 1, '2013-08-01', 'Travel to Italy', 'Say hi to the pobe and swim in the lake of souls', 0);
+INSERT INTO `bucket_db`.`goal` VALUES (2, 1, '2013-08-02', 'Take driver license to motorbike', '...so I can ride into the sunset', 1);
+INSERT INTO `bucket_db`.`goal` VALUES (3, 3, '2013-08-22', 'Kill a spider', 'I hate them', 0);
+INSERT INTO `bucket_db`.`goal` VALUES (4, 2, '2013-09-01', 'Travel to Italy', 'Say hi to the pobe and swim in the lake of souls', 0);
+INSERT INTO `bucket_db`.`goal` VALUES (5, 2, '2013-09-01', 'Travel to Spain', 'Say hi', 1);
+INSERT INTO `bucket_db`.`goal` VALUES (6, 2, '2013-09-01', 'Travel to Australia', 'Say hi', 1);
 
 
 -- -----------------------------------------------------
