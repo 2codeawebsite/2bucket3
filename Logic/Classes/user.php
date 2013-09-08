@@ -29,6 +29,12 @@ class User {
 		$this->worktitle	= $worktitle;
 		$this->password		= $password;
 	}
+	
+	public function __get($property) {
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
 
 	public function getInstance() {
 		 return new self(); 

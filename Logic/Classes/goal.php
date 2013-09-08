@@ -45,39 +45,11 @@ class Goal {
 		$this->description 	= $description;	
 	}
 	
-	public function getGoalId() {
-		return $this->goalId;
-	}
-	
-	public function getUserId() {
-		return $this->userId;
-	}
-	
-	public function getStartDate() {
-		return $this->startDate;
-	}
-	
-	public function getTitle() {
-		return $this->title;
-	}
-	
-	public function getDescription() {
-		return $this->description;
-	}
-	  
-	/*
-	public static function constructWithAll($goalId, $userId, $startDate, $title, $description) {
-		$goal = new self();
-		
-		$goal->goalId 		= $goalId;
-		$goal->userId 		= $userId;
-		$goal->startDate 	= $startDate;
-		$goal->title 		= $title;
-		$goal->goal 		= $goal;
-				
-		return $goal;
-	}
-	*/
+    public function __get($property) {
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
 	
 	public static function constructGoal($userId, $startDate, $title, $description) {
 		$goal = new self();

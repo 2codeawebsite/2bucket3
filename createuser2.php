@@ -3,6 +3,7 @@
 session_start();
 
 require_once '\Logic\Classes\user.php';
+require_once '\Logic\Classes\goal.php';
 require_once '\Logic\Classes\db_queries.php';
 
 if(
@@ -28,18 +29,20 @@ if(
 	$worktitle = $_POST['worktitle'];
 	$password = $_POST['password'];
 	
-	$user = new user($firstname, $lastname, $username, $email, $city, $country, $age, $gender, $worktitle, $password);
+	$user = new User($firstname, $lastname, $username, $email, $city, $country, $age, $gender, $worktitle, $password);
 	$qry = new Queries();
-	$result = $qry->createUser($user);
+	$userId = $qry->createUser($user);
 	
-	if($result){
-		$userId = $qry->getUserId($username);
-		if($userId) {
+	if($userId){
+		$goal = Goal::constructGoal($userId, date("Y-m-d"), 'My first goal', 'My first goal is to create my first goal.');
+		if($qry->createGoal($goal)) {
 			if($qry->createBucketList($userId, "Lifelong", "This is the lifelong bucket list")) {
-				$_SESSION['user_created'] = 'The user and the bucket list has been created';
+				$_SESSION['user_created'] = 'The user and the bucket list with a goal has been created';
 			} else {
-				$_SESSION['user_created'] = 'The user has been created and the bucket list was NOT created!';
-			}	
+				$_SESSION['user_created'] = 'The user and goal have been created and the bucket list was NOT created!';
+			}
+		} else {
+			$_SESSION['user_created'] = 'The user has been created but the goal and bucket list was NOT created!';
 		}
 		header('Location: index.php');
 	} else{
