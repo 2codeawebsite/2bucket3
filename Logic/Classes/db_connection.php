@@ -31,11 +31,35 @@ class Connection {
 		return $result;
 	}
 	
+	public function run_query_return_array($query){
+		$result = $this->connection->query($query);
+		return $this->resultToArray($result);
+	}
+	
+	public function run_query_last_inserted_id($query){
+		$result = $this->connection->query($query);
+		$lastInsertedId = $this->connection->insert_id;
+		return $lastInsertedId;
+	}
+	
+	
 	public function free_result($result){
 		$result->free();
 	}
 	public function close_connection($con){
 		$con->close();
+	}
+	
+	
+	/*
+	 * Function takes a resultset and returns an array with multiple rows.
+	 * */
+	private function resultToArray($result) {
+	    $rows = array();
+	    while($row = $result->fetch_assoc()) {
+	        $rows[] = $row;
+	    }
+	    return $rows;
 	}
 }
 

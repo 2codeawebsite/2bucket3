@@ -34,8 +34,9 @@
 		require_once '\Logic\Classes\db_queries.php';
 		
 		$qry = new Queries();
-		$result = $qry->getAllOnUsers(1);
-		var_dump($result);
+		$result = $qry->getAllOnUsers();
+		echo '<pre>';
+		print_r($result);
 	
 	?>
 </body>
