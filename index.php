@@ -1,5 +1,6 @@
 <?php 
 require_once 'Logic/Classes/goal.php';
+require_once 'Logic/Classes/db_queries.php';
 require('header.php');
 $goal = new Goal();
 $procent = new Queries();
@@ -12,13 +13,13 @@ $procent = new Queries();
 	
 	?>
 	<div id="spacer">
-		<div class="average">
-	        Each user has <br>an average of
-	        <h1><?php echo $procent->procentageAchievedGoalsAllUsers(); ?></h1>
-	        goals to achieve!<br>
+		<div class="achieved">
+	        Users have
+	        <h1><?php echo $procent->procentageAchievedGoalsAllUsers(); ?>%</h1>
+	        achieved goals!
 	    </div>
 	    <div class="average">
-	        Each user has <br>an average of
+	        Users have an average of
 	        <h1><?php echo $goal->calculateAvarageGoals(); ?></h1>
 	        goals to achieve!<br>
 	    </div>
