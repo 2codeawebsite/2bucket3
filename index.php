@@ -10,7 +10,7 @@ $procent = new Queries();
 	<div id="site">
 	    <h2>Newest goals</h2>
 	    <?php
-	       
+	       if($_SESSION['user']) { var_dump($_SESSION['user']); }
 	    ?>
 	</div>
 <?php include('footer.php'); ?>

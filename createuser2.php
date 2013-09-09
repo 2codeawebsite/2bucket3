@@ -37,14 +37,14 @@ if(
 		$goal = Goal::constructGoal($userId, date("Y-m-d"), 'My first goal', 'My first goal is to create my first goal.');
 		if($qry->createGoal($goal)) {
 			if($qry->createBucketList($userId, "Lifelong", "This is the lifelong bucket list")) {
-				$_SESSION['user_created'] = 'The user and the bucket list with a goal has been created';
+				$_SESSION['new_user'] = 'Your new user has been created. Please login now';
 			} else {
-				$_SESSION['user_created'] = 'The user and goal have been created and the bucket list was NOT created!';
+				$_SESSION['new_user'] = 'The user and goal have been created and the bucket list was NOT created!';
 			}
 		} else {
-			$_SESSION['user_created'] = 'The user has been created but the goal and bucket list was NOT created!';
+			$_SESSION['new_user'] = 'The user has been created but the goal and bucket list was NOT created!';
 		}
-		header('Location: index.php');
+		header('Location: login.php');
 	} else{
 		header('Location: createuser.php');
 	}

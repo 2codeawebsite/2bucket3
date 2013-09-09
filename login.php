@@ -8,6 +8,12 @@ $goal = new Goal();
 $procent = new Queries();
 ?>
 	<div id="site">
+		<?php 
+			// if($_SESSION['new_user']) {
+				// echo $_SESSION['new_user'];
+				// $_SESSION['new_user'] = NULL;
+			// }
+		?>
 	    <h2>Login</h2>
 	    <form action="loginauth.php" method="POST" id="form_login">
 			<label for="username">Username:</label> <input type="text" name="username" id="username"><br>

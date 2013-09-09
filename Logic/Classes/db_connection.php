@@ -8,7 +8,7 @@ class Connection {
 	function __construct(){
 		$this->db['host'] 		= 'localhost';
 		$this->db['user'] 		= 'root';
-		$this->db['password'] 	= 'root';
+		$this->db['password'] 	= '';
 		$this->db['db'] 		= 'bucket_db';
 		
 		$this->connect();

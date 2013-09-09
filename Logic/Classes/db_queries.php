@@ -32,6 +32,12 @@ class Queries {
 		return $result;
 	}
 	
+	public function getUserInfo($username) {
+		$instance = new Connection();
+		$result = $instance->run_query('SELECT * FROM user WHERE username="'.$username.'"');
+		return $result->fetch_array(MYSQLI_ASSOC);
+	}
+	
 	public function createGoal($goal){
 		$instance = new Connection();
 		$result = $instance->run_query('INSERT INTO goal (`user_id`, `start_date`, `title`, `description`) 

@@ -1,7 +1,5 @@
 <?php
 
-//require_once 'Logic/Database/queries.php';
-
 class User {
 
 	private $id;
@@ -30,60 +28,15 @@ class User {
 		$this->password		= $password;
 	}
 	
+	public static function getUserInstance() {
+		return new self();
+	}
+	
 	public function __get($property) {
         if (property_exists($this, $property)) {
             return $this->$property;
         }
     }
-
-	public function getInstance() {
-		 return new self(); 
-	}
-
-	public function getUserId() {
-		return $this->id;
-	}
-
-	public function getFirstName() {
-		return $this->first_name;
-	}
-
-	public function getLastName() {
-		return $this->last_name;
-	}
-
-	public function getUsername() {
-		return $this->username;
-	}
-
-	public function getEmail() {
-		return $this->email;
-	}
-
-	public function getCity() {
-		return $this->city;
-	}
-
-	public function getCountry() {
-		return $this->country;
-	}
-
-	public function getAge() {
-		return $this->age;
-	}
-
-	public function getGender() {
-		return $this->gender;
-	}
-
-	public function getWorktitle() {
-		return $this->worktitle;
-	}
-
-	public function getPassword() {
-		return $this->password;
-	}
-
 
 	public function calculateYeasLeftToLive($age, $gender) {
 
@@ -139,6 +92,12 @@ class User {
 		$result = $result * ($numberOfUnachievedGoalsProcentage / 100 + 1);
 
 		return $result;
+	}
+	
+	public static function loginAuth($username, $password) {
+		require_once 'Logic/Database/queries.php';
+		$qry = new Queries();
+		return $qry->loginAuth($un, $pw);
 	}
 
 }

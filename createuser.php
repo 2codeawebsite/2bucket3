@@ -31,4 +31,4 @@
 		</table>
 	</form>
 </div>
-<?php unclude('footer.php'); ?>
+<?php include('footer.php'); ?>
