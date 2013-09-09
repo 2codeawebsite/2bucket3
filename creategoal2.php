@@ -28,10 +28,4 @@ if(
 }else{
 	header('Location: creategoal.php');
 }
-
-
-
-
-
-
 ?>

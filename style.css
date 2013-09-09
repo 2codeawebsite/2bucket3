@@ -1,4 +1,89 @@
-   .button {
+html,body {
+    margin:0px;
+    background:#ededed url('assets/images/background-003.jpg') top no-repeat;
+    background-size:contain;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size:1.2em;
+}
+#header {
+    position:relative;
+    background-color:#3d3d3d;
+    color:#fff;
+}
+
+#header .menu {
+    list-style:none;
+    padding:0px;
+    margin:0px;
+}
+#header .menu li {
+    display:inline;
+}
+#header .menu li a {
+    display:block;
+    float:left;
+    padding:10px;
+    color:#fff;
+    text-decoration:none;
+}
+#header .container {
+    width:900px;
+    margin:0 auto;
+}
+#site {
+    width:850px;
+    min-height: 500px;
+    margin:0 auto;
+    padding:20px;
+    background-color:rgba(255,255,255,0.8);
+}
+#spacer {
+    position:relative;
+    width:900px;
+    margin:0 auto;
+    height:255px;
+}
+#spacer .achieved {
+    position:absolute;
+    right:220px;
+    top:20px;
+    width:200px;
+    padding:30px 0;
+    text-align:center;
+    border-radius:5px;
+}
+#spacer .average {
+    position:absolute;
+    right:0px;
+    top:20px;
+    width:200px;
+    padding:30px 0;
+    text-align:center;
+    border-radius:5px;
+}
+.green {
+    background-color:rgba(101,224,24,0.8);
+    color:#fff;
+}
+#spacer .average h1,#spacer .achieved h1 {
+    margin:0;
+    font-size:2.8em;
+}
+/* Clear */
+.clearB { clear:both; }
+
+/* common form styles */
+input:not(.green) { border:1px solid #65E018;padding:5px;background-color:#fff; color:#3d3d3d; }
+input[type="submit"] { border:1px solid #3d3d3d;padding:10px; }
+/* User registration */
+.form_inputs {}
+.form_inputs label {display:block}
+.form_inputs table td { width:200px; }
+/*user login*/
+
+#form_login label {display:inline-block; width:90px;}
+
+.button {
     font: bold 20px Arial;
     width:150px;
     text-align:center;
@@ -10,4 +95,4 @@
     border-right: 1px solid #333333;
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
-   }
+}

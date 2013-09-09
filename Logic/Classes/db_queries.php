@@ -14,19 +14,12 @@ class Queries {
 		$row = $result->fetch_array(MYSQLI_NUM);
 		return $row[0];
 	}
-	
+
 	public function procentageAchievedGoalsAllUsers() {
 		$instance = new Connection();
 		$result = $instance->run_query('SELECT CAST((SELECT COUNT(ID) FROM goal WHERE achieved=1) / (SELECT COUNT(ID) FROM goal) * 100 as UNSIGNED) as average');
 		$row = $result->fetch_array(MYSQLI_NUM);
 		return $row[0];
-	}
-	
-	public function markGoalAsAchieved($goalId) {
-		$instance = new Connection();
-		$result = $instance->run_query('UPDATE goal SET goalStatus = 1 WHERE goalId = "' . $goalId . '"');
-		//$instance->close_connection($instance);
-		return $result;
 	}
 	
 	public function createUser($user){
@@ -46,12 +39,13 @@ class Queries {
 		return $result;
 	}
 	
-	public function loginAuth($username, $password){
+		public function loginAuth($username, $password){
 		$instance = new Connection();
-		$result = $instance->run_query('SELECT ID FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
-		$rows = $result->num_rows;
-		return ($rows == 1 ? TRUE : FALSE);
+		$result = $instance->run_query('SELECT * FROM user WHERE username ="'.$username.'" AND password="'.$password.'"');
+		$row = $result->fetch_array(MYSQLI_NUM);
+		return $row[0];
 	}
+
 
 	public function getUserId($username) {
 		$instance = new Connection();
