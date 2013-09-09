@@ -21,7 +21,7 @@ $procent = new Queries();
 	    <div class="average">
 	        Users have an average of
 	        <h1><?php echo $goal->calculateAvarageGoals(); ?></h1>
-	        goals to achieve!<br>
+	        goals to achieve!
 	    </div>
 	</div>
 	<div id="site">
