@@ -1,7 +1,9 @@
 <?php 
 require_once 'Logic/Classes/goal.php';
 require_once 'Logic/Classes/db_queries.php';
-require('header.php');
+
+include('header.php');
+
 $goal = new Goal();
 $procent = new Queries();
 ?>
@@ -30,7 +32,4 @@ $procent = new Queries();
 	       
 	    ?>
 	</div>
-	
-</body>
-
-</html> 
+<?php include('footer.php'); ?>
