@@ -14,17 +14,12 @@ class Queries {
 		$row = $result->fetch_array(MYSQLI_NUM);
 		return $row[0];
 	}
+
 	public function procentageAchievedGoalsAllUsers() {
 		$instance = new Connection();
 		$result = $instance->run_query('SELECT CAST((SELECT COUNT(ID) FROM goal WHERE achieved=1) / (SELECT COUNT(ID) FROM goal) * 100 as UNSIGNED) as average');
 		$row = $result->fetch_array(MYSQLI_NUM);
 		return $row[0];
-	}
-	public function markGoalAsAchieved($goalId) {
-		$instance = new Connection();
-		$result = $instance->run_query('UPDATE goal SET goalStatus = 1 WHERE goalId = "' . $goalId . '"');
-		//$instance->close_connection($instance);
-		return $result;
 	}
 	
 	public function createUser($user){
