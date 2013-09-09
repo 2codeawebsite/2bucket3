@@ -1,16 +1,16 @@
 -- CREATE USER 'bucket'@'localhost' IDENTIFIED BY '1234';
--- DROP DATABASE IF EXISTS bucket_db;
--- CREATE DATABASE bucket_db;
+DROP DATABASE IF EXISTS `bucket_db`;
+CREATE DATABASE IF NOT EXISTS `bucket_db`;
 
 -- ----------------------------------------------------
 -- Drop views and tables
 -- ----------------------------------------------------
-DROP VIEW IF EXISTS `bucket_db`.`all_on_user`;
+-- DROP VIEW IF EXISTS `bucket_db`.`all_on_user`;
 
-DROP TABLE IF EXISTS `bucket_db`.`goalList` ;
-DROP TABLE IF EXISTS `bucket_db`.`list` ;
-DROP TABLE IF EXISTS `bucket_db`.`goal` ;
-DROP TABLE IF EXISTS `bucket_db`.`user` ;
+-- DROP TABLE IF EXISTS `bucket_db`.`goalList` ;
+-- DROP TABLE IF EXISTS `bucket_db`.`list` ;
+-- DROP TABLE IF EXISTS `bucket_db`.`goal` ;
+-- DROP TABLE IF EXISTS `bucket_db`.`user` ;
 
 SET CHARSET 'UTF8';
 
