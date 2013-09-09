@@ -6,7 +6,7 @@ include('header.php');
 
 $qry = new Queries();
 ?>
-	<div id="site">
+	<div id="site"> 
 	    <h2>Newest goals</h2>
 	    <?php
 	       if($_SESSION['user']) {
