@@ -1,8 +1,6 @@
 <?php
-
 session_start();
 
-require_once 'Logic/Classes/goal.php';
 require_once 'Logic/Classes/db_queries.php';
 
 if(
@@ -10,21 +8,19 @@ if(
 	isset($_POST['description']) && !empty($_POST['description'])  
 ){	
 	$userId = $_SESSION['user']['ID'];
-	$startDate = date("Y-m-d");
 	$title = $_POST['title'];
 	$description = $_POST['description'];
 	
-	$goal = Goal::constructGoal($userId, $startDate, $title, $description);
 	$qry = new Queries();
-	$result = $qry->createGoal($goal);
+	$result = $qry->createBucketList($userId, $title, $description);
 
 	if($result){
 		header('Location: index.php');
 	} else{
-		header('Location: addgoal.php');
-	}
-	
-}else{
-	header('Location: addgoal.php');
+		header('Location: addbucketlist.php');
+	}	
+} else {
+	header('Location: addbucketlist.php');
 }
+
 ?>

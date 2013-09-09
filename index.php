@@ -4,13 +4,17 @@ require_once 'Logic/Classes/db_queries.php';
 
 include('header.php');
 
-$goal = new Goal();
-$procent = new Queries();
+$qry = new Queries();
 ?>
 	<div id="site">
 	    <h2>Newest goals</h2>
 	    <?php
-	       if($_SESSION['user']) { var_dump($_SESSION['user']); }
+	       if($_SESSION['user']) {
+	       		/* This is userinformation */
+	       		var_dump($_SESSION['user']); 
+			    /* This returns all the data on the user that is logged in */
+		   		//var_dump($qry->getAllOnUsers($_SESSION['user']['ID']));
+		   }
 	    ?>
 	</div>
 <?php include('footer.php'); ?>

@@ -16,16 +16,16 @@ class Goal {
 	 */
 	public function __construct() {
 		$argv = func_get_args();
-	        switch( func_num_args() ) {
-	            case 1:
-	                self::__construct1();
-	                break;
-	            case 2:
-	                self::__construct2( $argv[0], $argv[1], $argv[2], $argv[3] );
-					break;
-				case 3:
-	                self::__construct3( $argv[0], $argv[1], $argv[2], $argv[3], $argv[4] );
-	         }
+        switch( func_num_args() ) {
+            case 1:
+                self::__construct1();
+                break;
+            case 2:
+                self::__construct2( $argv[0], $argv[1], $argv[2], $argv[3] );
+				break;
+			case 3:
+                self::__construct3( $argv[0], $argv[1], $argv[2], $argv[3], $argv[4] );
+         }
 	}
 	
 	public function __construct1() {}
