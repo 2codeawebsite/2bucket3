@@ -47,6 +47,16 @@ html,body {
     margin:0 auto;
     height:255px;
 }
+#spacer .achieving {
+    position:absolute;
+    right:440px;
+    top:20px;
+    width:200px;
+    height:130px;
+    padding:30px 0;
+    text-align:center;
+    border-radius:5px;
+}
 #spacer .achieved {
     position:absolute;
     right:220px;

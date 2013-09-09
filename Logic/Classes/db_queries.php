@@ -78,6 +78,13 @@ class Queries {
 		}
 		return $instance->run_query_return_array($qry);
 	}
+	
+	public function fearFactor($userId) {
+		$instance = new Connection();
+		$result = $instance->run_query('SELECT (SELECT COUNT(ID) FROM goal WHERE achieved=1 AND user_id="'.$userId.'") AS achieved, (SELECT COUNT(ID) FROM goal WHERE user_id="'.$userId.'") AS total');
+		$row = $result->fetch_array(MYSQLI_NUM);
+		return $row;
+	}
 
 }
 ?>

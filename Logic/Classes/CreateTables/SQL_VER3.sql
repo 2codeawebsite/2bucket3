@@ -51,7 +51,7 @@ CREATE  TABLE IF NOT EXISTS `bucket_db`.`goal` (
   `start_date` DATE NOT NULL ,
   `title` VARCHAR(255) NOT NULL ,
   `description` TEXT NULL ,
-  `achieved` INT NOT NULL ,
+  `achieved` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`ID`) ,
   INDEX `user_id` (`user_id` ASC) ,
   CONSTRAINT `user_id_1`

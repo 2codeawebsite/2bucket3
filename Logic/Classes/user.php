@@ -79,7 +79,7 @@ class User {
 	/*
 	 * Returns a number that represents the chance that the user acheves his Bucket List 
 	 * based on years left to live and % of unachieved goals. 
-	 * Higher is better.
+	 * Higher is better chance.
 	 * 
 	 * Example:
 	 * 		Years left to live (33): 	33 / 100 + 1 = 1,33 
@@ -91,6 +91,18 @@ class User {
 		$result = $yearsLeftToLive / 100 + 1;
 		$result = $result * ($numberOfUnachievedGoalsProcentage / 100 + 1);
 
+		return $result;
+	}
+	
+	public function fearFactorProcentage($age, $gender, $totalGoals, $goalsAchieved) {
+
+		$yearsLeftToLive = $this->calculateYeasLeftToLive($age, $gender);
+		$numberOfUnachievedGoalsProcentage = $this->numberOfUnachievedGoalsProcentage($totalGoals, $goalsAchieved);
+		
+		$result = $yearsLeftToLive / 100 + 1;
+		$result = $result * ($numberOfUnachievedGoalsProcentage / 100 + 1);
+
+		$result = pow(4.3, $result) ;
 		return $result;
 	}
 	

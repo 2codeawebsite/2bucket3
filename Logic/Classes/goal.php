@@ -57,7 +57,7 @@ class Goal {
 		$goal->userId 		= $userId;
 		$goal->startDate 	= $startDate;
 		$goal->title 		= $title;
-		$goal->goal 		= $goal;
+		$goal->description 	= $description;
 				
 		return $goal;
 	}
