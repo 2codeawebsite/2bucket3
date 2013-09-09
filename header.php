@@ -21,7 +21,9 @@ $procent = new Queries();
             <li><a href="index.php">Home</a></li>
             <li><a href="createuser.php">Create user</a></li>
             <?php if($_SESSION['user']) { ?>
-            	<li><a href="logout.php">Logout</a></li>
+            	<li><a href="addgoal.php">Add goal</a></li>
+            	<li><a href="addbucketlist.php">Create new bucket list</a></li>
+            	<li><a href="logout.php">Logout [<?php echo $_SESSION['user']['first_name'] ?>]</a></li>
             <?php } else { ?>
             	<li><a href="login.php">Login</a></li>
             <?php } ?>

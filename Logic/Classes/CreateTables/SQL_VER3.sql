@@ -1,16 +1,16 @@
 -- CREATE USER 'bucket'@'localhost' IDENTIFIED BY '1234';
-DROP DATABASE IF EXISTS `bucket_db`;
-CREATE DATABASE IF NOT EXISTS `bucket_db`;
+-- DROP DATABASE IF EXISTS `bucket_db`;
+-- CREATE DATABASE IF NOT EXISTS `bucket_db`;
 
 -- ----------------------------------------------------
 -- Drop views and tables
 -- ----------------------------------------------------
--- DROP VIEW IF EXISTS `bucket_db`.`all_on_user`;
+DROP VIEW IF EXISTS `bucket_db`.`all_on_user`;
 
--- DROP TABLE IF EXISTS `bucket_db`.`goalList` ;
--- DROP TABLE IF EXISTS `bucket_db`.`list` ;
--- DROP TABLE IF EXISTS `bucket_db`.`goal` ;
--- DROP TABLE IF EXISTS `bucket_db`.`user` ;
+DROP TABLE IF EXISTS `bucket_db`.`goalList` ;
+DROP TABLE IF EXISTS `bucket_db`.`list` ;
+DROP TABLE IF EXISTS `bucket_db`.`goal` ;
+DROP TABLE IF EXISTS `bucket_db`.`user` ;
 
 SET CHARSET 'UTF8';
 
@@ -31,9 +31,8 @@ CREATE  TABLE IF NOT EXISTS `bucket_db`.`user` (
   `gender` VARCHAR(255) NULL ,
   `worktitle` VARCHAR(255) NULL ,
   `password` VARCHAR(255) NOT NULL ,
-  PRIMARY KEY (`ID`) 
-  -- UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
-  -- UNIQUE INDEX `email_UNIQUE` (`email` ASC) 
+  PRIMARY KEY (`ID`),
+  CONSTRAINT uc_username_email UNIQUE (`username`,`email`)
 )
 ENGINE = InnoDB;
 

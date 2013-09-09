@@ -94,12 +94,6 @@ class User {
 		return $result;
 	}
 	
-	public static function loginAuth($username, $password) {
-		require_once 'Logic/Database/queries.php';
-		$qry = new Queries();
-		return $qry->loginAuth($un, $pw);
-	}
-
 }
 
 ?>
