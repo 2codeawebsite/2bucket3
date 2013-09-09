@@ -48,8 +48,9 @@ class Queries {
 	
 	public function loginAuth($username, $password){
 		$instance = new Connection();
-		$result = $instance->run_query('SELECT * FROM user WHERE username ="'.$username.'" AND password="'.$password.'"');
-		return $result;
+		$result = $instance->run_query('SELECT ID FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
+		$rows = $result->num_rows;
+		return ($rows == 1 ? TRUE : FALSE);
 	}
 
 	public function getUserId($username) {
