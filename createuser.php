@@ -1,45 +1,34 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>2Bucket - Create User</title>
-	</head>
-
-	<body>
-		<div>
-			<form action="createuser2.php" method="POST">
-				First Name:
-				<input type="text" name="firstname" value="Hans"> 
-				<br>
-				Last name:
-				<input type="text" name="lastname" value="Hansen">
-				<br>
-				Username:
-				<input type="text" name="username" value="hhansen">
-				<br>
-				Password:
-				<input type="text" name="password" value="1234">
-				<br>
-				Email:
-				<input type="text" name="email" value="hans@hansen.dk">
-				<br>
-				City:
-				<input type="text" name="city" value="Copenhagen">
-				<br>
-				Country:
-				<input type="text" name="country" value="Denmark">
-				<br>
-				Age:
-				<input type="text" name="age" value="21">
-				<br>
-				Gender:
-				<input type="text" name="gender" value="male">
-				<br>
-				Worktitle:
-				<input type="text" name="worktitle" value="Student">
-				<br>
-				<input type="submit" value="Create User">
-			</form>
-		</div>
-	</body>
-
-</html>
+<?php include('header.php'); ?>
+<div id="site">
+	<form action="createuser2.php" method="POST" class="form_inputs">
+		<table cellspacing="0" cellpadding="0">
+		<tr><td>
+		<label for="firstname">Name:</label>
+		<input type="text" name="firstname" id="firstname" value="Hans"> 
+		<label for="lastname">Last name:</label>
+		<input type="text" name="lastname" id="lastname" value="Hansen">
+		<label for="username">Username:</label>
+		<input type="text" name="username" id="username" value="hhansen">
+		<label for="password">Password:</label>
+		<input type="text" name="password" id="password" value="1234">
+		<label for="email">Email:</label>
+		<input type="text" name="email" id="email" value="hans@hansen.dk">
+		</td><td>
+		<label for="city">City:</label>
+		<input type="text" name="city" id="city" value="Copenhagen">
+		<label for="country">Country:</label>
+		<input type="text" name="country" id="country" value="Denmark">
+		<label for="age">Age:</label>
+		<input type="text" name="age" id="age" value="21">
+		<label for="gender">Gender:</label>
+		<input type="text" name="gender" id="gender" value="male">
+		<label for="worktitle">Worktitle:</label>
+		<input type="text" name="worktitle" id="worktitle" value="Student">
+		</td></tr>
+		<tr><td colspan="2">
+		<p><input type="submit" value="Create User" class="green"></p>
+		</td></tr>
+		</table>
+	</form>
+</div>
+<?php unclude('footer.php'); ?>

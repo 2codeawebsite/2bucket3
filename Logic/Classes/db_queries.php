@@ -44,11 +44,13 @@ class Queries {
 		return $result;
 	}
 	
-	public function loginAuth($username, $password){
+		public function loginAuth($username, $password){
 		$instance = new Connection();
 		$result = $instance->run_query('SELECT * FROM user WHERE username ="'.$username.'" AND password="'.$password.'"');
-		return $result;
+		$row = $result->fetch_array(MYSQLI_NUM);
+		return $row[0];
 	}
+
 
 	public function getUserId($username) {
 		$instance = new Connection();
