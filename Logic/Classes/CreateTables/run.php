@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("localhost", "bucket", "1234", "bucket_db");
+$link = mysqli_connect("localhost", "root", "root", "bucket_db");
 
 /* check connection */
 if (mysqli_connect_errno()) {
