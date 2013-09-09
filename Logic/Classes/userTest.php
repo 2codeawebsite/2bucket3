@@ -17,7 +17,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	 * */
 	function testGetAge() {
 		$user = new User('Jens', 'Hansen', 'jhansen', 'jens@hansen.dk', 'Copenhagen', 'Denmark', 45, 'male', 'carpenter', '1234');
-		$age = $user->getAge();
+		$age = $user->age;
 		$this->assertEquals($age, 45);
 	}
 
@@ -28,7 +28,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	 
 	function testCalculateYeasLeftToLiveMale() {
 		$user = new User('Jens', 'Hansen', 'jhansen', 'jens@hansen.dk', 'Copenhagen', 'Denmark', 45, 'male', 'carpenter', '1234');
-		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
+		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->age, $user->gender);
 		$this->assertEquals($yearsLeftToLive, 29);
 	}
 
@@ -38,7 +38,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	 * */
 	function testCalculateYeasLeftToLiveFemale() {
 		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner', '1234');
-		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
+		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->age, $user->gender);
 		$this->assertEquals($yearsLeftToLive, 33);
 	}
 
@@ -49,7 +49,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	 * */	
 	function testCalculateYeasLeftToLiveLowAge() {
 		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 9, 'female', 'cleaner', '1234');
-		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
+		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->age, $user->gender);
 		$this->assertFalse($yearsLeftToLive);
 	}
 
@@ -60,7 +60,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	 * */
 	function testCalculateYeasLeftToLiveHighAge() {
 		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 121, 'female', 'cleaner', '1234');
-		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
+		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->age, $user->gender);
 		$this->assertFalse($yearsLeftToLive);
 	}
 
@@ -81,7 +81,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	function testFearFactor() {
 		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner', '1234');
 
-		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
+		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->age, $user->gender);
 		$numberOfUnachievedGoalsProcentage = $user->numberOfUnachievedGoalsProcentage(10, 4);
 
 		// the $fearFactor varable needs to be parsed to a String (strval) in order to pass the test.
