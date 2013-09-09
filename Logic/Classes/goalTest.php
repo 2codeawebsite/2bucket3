@@ -14,11 +14,11 @@ class GoalTest extends PHPUnit_Framework_TestCase {
 	 * This test is a bit irellevant! This could just as well be a database select statement 
 	 * SELECT COUNT(goalId) FROM goals WHERE userId = 1
 	 */
-	public function testNumberOfGoalds() {
+	public function testNumberOfGoals() {
 		$user = new User(1, 'Jens', 'Hansen', 'jhansen', 'jens@hansen.dk', 'Copenhagen', 'Denmark', 45, 'male', 'carpenter');
 		
-		$goal1 = new Goal(1, $user->getUserId(), '2013-08-30', 'Go to Syria', 'Talk to the Syrian leader and tell him that he is OK');
-		$goal2 = new Goal(2, $user->getUserId(), '2013-09-30', 'Also go to Syria', 'Talk to the Syrian leader and tell him that he is not OK');
+		$goal1 = new Goal(1, $user->userId, '2013-08-30', 'Go to Syria', 'Talk to the Syrian leader and tell him that he is OK');
+		$goal2 = new Goal(2, $user->userId, '2013-09-30', 'Also go to Syria', 'Talk to the Syrian leader and tell him that he is not OK');
 		
 		//$goal1 = Goal::constructWithAll(1, $user->getUserId(), '2013-08-30', 'Go to Syria', 'Talk to the Syrian leader and tell him that he is OK');
 		//$goal2 = Goal::constructWithAll(2, $user->getUserId(), '2013-08-30', 'Go to Syria', 'Talk to the Syrian leader and tell him that he is OK');
