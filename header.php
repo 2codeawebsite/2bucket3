@@ -1,4 +1,5 @@
-<?php session_start();
+<?php 
+session_start();
 require_once 'Logic/Classes/goal.php';
 require_once 'Logic/Classes/user.php';
 require_once 'Logic/Classes/db_queries.php';
@@ -49,6 +50,9 @@ $procent = new Queries();
 	        		echo '<h1>'. $result . '%</h1>';
 	        		echo 'of achieving your goals!';
 	    			echo '</div>';
+				} 
+				if (isset($_POST['id']) && !empty($_POST['id'])) {
+					require_once 'Logic/Classes/performance_test_frontpage.php';
 				}
 			?>
 		<div class="achieved green">

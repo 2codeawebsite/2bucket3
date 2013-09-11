@@ -5,9 +5,13 @@ require_once 'Logic/Classes/db_queries.php';
 
 if(
 	isset($_POST['title']) && !empty($_POST['title']) &&
-	isset($_POST['description']) && !empty($_POST['description'])  
-){	
-	$userId = $_SESSION['user']['ID'];
+	isset($_POST['description']) && !empty($_POST['description'])
+){
+	if(isset($_POST['id']) && !empty($_POST['id'])) {
+		$userId = $_POST['id'];
+	} else {
+		$userId = $_SESSION['user']['ID'];
+	}
 	$title = $_POST['title'];
 	$description = $_POST['description'];
 	

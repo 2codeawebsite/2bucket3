@@ -8,8 +8,12 @@ require_once 'Logic/Classes/db_queries.php';
 if(
 	isset($_POST['title']) && !empty($_POST['title']) &&
 	isset($_POST['description']) && !empty($_POST['description'])  
-){	
-	$userId = $_SESSION['user']['ID'];
+){
+	if(isset($_POST['id']) && !empty($_POST['id']))	{
+		$userId = $_POST['id'];
+	} else {
+		$userId = $_SESSION['user']['ID'];	
+	}
 	$startDate = date("Y-m-d");
 	$title = $_POST['title'];
 	$description = $_POST['description'];
