@@ -1,5 +1,9 @@
 <?php
 
+require_once 'Logic/Classes/user.php';
+require_once 'Logic/Classes/goal.php';
+require_once 'Logic/Classes/db_queries.php';
+
 if(
 	isset($_POST['id']) && !empty($_POST['id']) &&
 	isset($_POST['firstname']) && !empty($_POST['firstname']) &&
