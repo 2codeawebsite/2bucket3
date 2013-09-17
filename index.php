@@ -1,20 +1,16 @@
-<?php 
-require_once 'Logic/Classes/goal.php';
-require_once 'Logic/Classes/db_queries.php';
-
+<?php
 include('header.php');
-
 $qry = new Queries();
 ?>
 	<div id="site"> 
-	    <h2>Newest goals</h2>
-	    <?php
-	       if($_SESSION['user']) {
-	       		/* This is userinformation */
-	       		var_dump($_SESSION['user']); 
-			    /* This returns all the data on the user that is logged in */
-		   		//var_dump($qry->getAllOnUsers($_SESSION['user']['ID']));
-		   }
-	    ?>
+		
+		<?php
+			$result = $qry->getBucketList();
+			
+			foreach($result as $row){
+				echo '<h2>'.$row['name'].'</h2>';
+			}
+		?>
+		
 	</div>
 <?php include('footer.php'); ?>

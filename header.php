@@ -11,6 +11,7 @@ $procent = new Queries();
 <!DOCTYPE html>
 <html>
 <head>
+<base href="http://localhost:8888/2bucket3/" />
 <title>2Bucket - Get it done before you die!</title>
 <link href='http://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -22,12 +23,11 @@ $procent = new Queries();
         <ul class="menu">
             <li><a href="index.php">Home</a></li>
             <?php if($_SESSION['user']) { ?>
-            	<li><a href="addgoal.php">Add goal</a></li>
-            	<li><a href="addbucketlist.php">Create new bucket list</a></li>
-            	<li><a href="logout.php">Logout [<?php echo $_SESSION['user']['first_name'] ?>]</a></li>
+            	<li><a href="<?php echo base_url; ?>views/account/dashboard.php">Dashboard</a></li>
+            	<li><a href="<?php echo base_url; ?>logout.php">Logout [<?php echo $_SESSION['user']['first_name'] ?>]</a></li>
             <?php } else { ?>
-            	<li><a href="createuser.php">Create user</a></li>
-            	<li><a href="login.php">Login</a></li>
+            	<li><a href="<?php echo base_url; ?>createuser.php">Create user</a></li>
+            	<li><a href="<?php echo base_url; ?>login.php">Login</a></li>
             <?php } ?>
         </ul>
     </div>

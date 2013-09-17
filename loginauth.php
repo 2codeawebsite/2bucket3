@@ -10,7 +10,7 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
 	$result = $qry->loginAuth($un, $pw);
 	if ($result[0]) {
 		$_SESSION['user'] = $qry->getUserInfo($un);
-		header('Location: index.php');
+		header('Location: '.base_url.'views/account/dashboard.php');
 		//Location and content?
 	} else {
 		$_SESSION['login_failed'] = 'User not found or incorrect password!';
