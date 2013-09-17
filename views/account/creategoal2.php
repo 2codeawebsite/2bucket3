@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ALL);
 session_start();
 
 require_once '../../Logic/Classes/goal.php';
@@ -14,25 +13,24 @@ if(
 	} else {
 		$userId = $_SESSION['user']['ID'];	
 	}
-	$random = rand(4,28);
-	$date 	= strtotime(date("Y-m-d")."+ ".$random." days");
-	$startDate = date("Y-m-d",$date);
+	$date 	= strtotime(date("Y-m-d")."+ 30 days");
+	$endDate = date("Y-m-d",$date);
 	
 	$title 			= $_POST['title'];
 	$description 	= $_POST['description'];
 	$bucket 		= serialize($_POST['list']);
 	
-	$goal = Goal::constructGoal($userId, $startDate, $title, $description, $bucket);
+	$goal = Goal::constructGoal($userId, $endDate, $title, $description, $bucket);
 	$qry = new Queries();
 	$result = $qry->createGoal($goal);
 
 	if($result){
-		header('Location: '.base_url.'index.php');
+		header('Location: '.base_url.'views/account/dashboard.php');
 	} else{
-		header('Location: '.base_url.'addgoal.php');
+		header('Location: '.base_url.'views/account/addgoal.php');
 	}
 	
 }else{
-	header('Location: '.base_url.'addgoal.php');
+	header('Location: '.base_url.'views/account/addgoal.php');
 }
 ?>

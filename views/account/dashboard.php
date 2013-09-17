@@ -6,24 +6,29 @@ $qry 	= new Queries();
 <div id="site"> 
 <?php
 	if($_SESSION['user']):
-		$goals = $qry->getGoals($_SESSION['user']['ID']);
+		$list = $qry->getBucketList($_SESSION['user']['ID']);
 		include('menu.php');
 	?>
 	<div class="content">
-	    <h2>My Goals</h2>
+	    <h2>Dashboard</h2>
 	    <?php
-	    	foreach($goals as $row){
+	    	foreach($list as $row){
+	    		$goals = $qry->getBucketGoals($row['ID']);
 	    		echo '<div class="goalbox">';
-	    		echo '<h2>'.$row['title'].'</h2>';
+	    		echo '<h2>'.$row['name'].'</h2>';
 				echo '<p class="description">'.$row['description'].'</p>';
-				echo '<p>List: '.$row['name'].'</p>';
 				
-				if($row['days'] > 1){
-					echo '<p>You have '.$row['days'].' days to achieve this goal</p>';					
-				} elseif($row['days'] == 1) {
-					echo '<p>You have '.$row['days'].' day to achieve this goal</p>';
-				} else {
-					echo '<p>'.abs($row['days']).' days to slow.. You are the weakest leech, goodbye!</p>';
+				foreach($goals as $goal){
+					echo '<p class="goal"><strong>'.$goal['title'].':</strong> '.$goal['description'].'<br>';
+				
+					if($goal['days'] > 1){
+						echo '<small>You have '.$goal['days'].' days to achieve this goal</small>';					
+					} elseif($goal['days'] == 1) {
+						echo '<small>You have '.$goal['days'].' day to achieve this goal</small>';
+					} else {
+						echo '<small>'.abs($goal['days']).' days to slow.. You are the weakest leech, goodbye!</small>';
+					}
+					echo '</p>';
 				}
 				echo '</div>';
 	    	}
@@ -31,4 +36,4 @@ $qry 	= new Queries();
 	</div>
 	<?php endif; ?>
 </div>
-<?php include('footer.php'); ?>
+<?php include('../../footer.php'); ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once 'Logic/Classes/db_queries.php';
+require_once '../../Logic/Classes/db_queries.php';
 
 if(
 	isset($_POST['title']) && !empty($_POST['title']) &&
@@ -19,12 +19,12 @@ if(
 	$result = $qry->createBucketList($userId, $title, $description);
 
 	if($result){
-		header('Location: index.php');
+		header('Location: dashboard.php');
 	} else{
-		header('Location: addbucketlist.php');
+		header('Location: ../../addbucketlist.php');
 	}	
 } else {
-	header('Location: addbucketlist.php');
+	header('Location: ../../addbucketlist.php');
 }
 
 ?>

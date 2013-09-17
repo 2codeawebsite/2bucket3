@@ -103,6 +103,9 @@ class User {
 		$result = $result * ($numberOfUnachievedGoalsProcentage / 100 + 1);
 
 		$result = pow(4.3, $result) ;
+		
+		$result = ($numberOfUnachievedGoalsProcentage == 0) ? '100' : number_format($result,2);
+		
 		return $result;
 	}
 	

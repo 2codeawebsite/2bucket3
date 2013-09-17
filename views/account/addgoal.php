@@ -22,4 +22,4 @@ $qry = new Queries();
 			<p><input type="submit" value="Create Goal" class="green"></p>
 		</form>
 	</div>
-<?php endif; include('footer.php'); ?>
+<?php endif; include('../../footer.php'); ?>

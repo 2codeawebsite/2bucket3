@@ -49,28 +49,28 @@ class Queries {
 		}
 		return $result;
 	}
-	
 	public function getGoals($userId){
 		$instance = new Connection();
-		$result = $instance->run_query_return_array('Select l.name,g.ID,g.start_date,g.title,g.description,gl.achieved,DATEDIFF(start_date,NOW()) as days from list l inner join goalList gl on l.ID = gl.list right join goal g on g.ID = gl.goal where l.user_id = "'.$userId.'" order by g.start_date');
+		$result = $instance->run_query_return_array('Select g.ID,g.start_date,g.title,g.description,gl.achieved,DATEDIFF(start_date,NOW()) as days from goal g left join goalList gl on g.ID = gl.goal where gl.user_id = "'.$userId.'" order by g.start_date');
 		return $result;
 	}
-	
+	public function getBucketGoals($bucketId){
+		$instance = new Connection();
+		$result = $instance->run_query_return_array('Select g.ID,g.start_date,g.title,g.description,gl.achieved,DATEDIFF(start_date,NOW()) as days from goal g left join goalList gl on g.ID = gl.goal where gl.list = "'.$bucketId.'" order by g.start_date');
+		return $result;
+	}
 	public function loginAuth($username, $password){
 		$instance = new Connection();
 		$result = $instance->run_query('SELECT * FROM user WHERE username ="'.$username.'" AND password="'.$password.'"');
 		$row = $result->fetch_array(MYSQLI_NUM);
 		return $row[0];
 	}
-
-
 	public function getUserId($username) {
 		$instance = new Connection();
 		$result = $instance->run_query('SELECT `ID` FROM user WHERE username ="'.$username.'"');
 		$row = $result->fetch_array(MYSQLI_NUM);
 		return $row[0];
 	}
-	
 	public function createBucketList($userId, $title, $description) {
 		$instance = new Connection();
 		$result = $instance->run_query('INSERT INTO list (`user_id`, `name`, `description`) 
@@ -80,7 +80,7 @@ class Queries {
 	public function getBucketList($userId = false){
 		$instance = new Connection();
 		if($userId):
-			$result = $instance->run_query_return_array('Select l.ID,l.name from goalList gl left join list l on l.ID = gl.list where gl.user_id = "'.$userId.'" group by l.ID order by l.name');
+			$result = $instance->run_query_return_array('Select l.ID,l.name,l.description from goalList gl left outer join list l on l.ID = gl.list where gl.user_id = "'.$userId.'" group by gl.list order by l.name');
 		else :
 			$result = $instance->run_query_return_array('Select l.ID,l.name from goalList gl left join list l on l.ID = gl.list group by l.ID order by l.name');
 		endif;

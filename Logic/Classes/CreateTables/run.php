@@ -8,7 +8,7 @@ if (mysqli_connect_errno()) {
 }
 
 
-$file = 'SQL_VER3.sql';
+$file = 'SQL_VER4.sql';
 
 $fh = fopen($file, 'r');
 $theData = fread($fh, filesize($file));

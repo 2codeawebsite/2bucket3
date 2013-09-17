@@ -11,7 +11,7 @@ $procent = new Queries();
 <!DOCTYPE html>
 <html>
 <head>
-<base href="http://localhost:8888/2bucket3/" />
+<base href="<?php echo base_url; ?>" />
 <title>2Bucket - Get it done before you die!</title>
 <link href='http://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -43,7 +43,7 @@ $procent = new Queries();
 					
 					$qry = new Queries();
 					$array = $qry->fearFactor($_SESSION['user']['ID']);
-					$result = number_format($user->fearFactorProcentage($user->age, $user->gender, $array[1], $array[0]), 2);
+					$result = $user->fearFactorProcentage($user->age, $user->gender, $array[1], $array[0]);
 					
 					echo '<div class="achieving green">';
 					echo 'You have a';
