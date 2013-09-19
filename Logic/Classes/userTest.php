@@ -55,21 +55,40 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	 * */	
 	function testCalculateYeasLeftToLiveLowAge() {
 		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 9, 'female', 'cleaner', '1234');
-		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
-		$this->assertFalse($yearsLeftToLive);
+		$result = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
+		$this->assertFalse($result);
 	}
+	
+	/*
+	 * Two test of the numberOfUnachievedGoals()-function
+	 * */
 	
 	function testNumberOfUnachievedGoalsOk() {
 		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 9, 'female', 'cleaner', '1234');
-		$numberOfUnachiededGoals = $user->numberOfUnachievedGoals(10, 5);
-		$this->assertEquals($numberOfUnachiededGoals, 5);
+		$result = $user->numberOfUnachievedGoals(10, 5);
+		$this->assertEquals($result, 5);
 	}
 
 	function testNumberOfUnachievedGoalsLow() {
 		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 9, 'female', 'cleaner', '1234');
-		$numberOfUnachiededGoals = $user->numberOfUnachievedGoals(10, 11);
-		$this->assertFalse($numberOfUnachiededGoals);
+		$result = $user->numberOfUnachievedGoals(10, 11);
+		$this->assertFalse($result);
 	}
+	
+	/*
+	 * Two test of the numberOfUnachievedGoalsProcentage()-function
+	 * */
+	function testNumberOfUnachievedGoalsProcentageOk() {
+		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 9, 'female', 'cleaner', '1234');
+		$result = $user->numberOfUnachievedGoalsProcentage(10, 5);
+		$this->assertEquals($result, 50);
+	} 
+	
+	function testNumberOfUnachievedGoalsProcentageHigh() {
+		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 9, 'female', 'cleaner', '1234');
+		$result = $user->numberOfUnachievedGoalsProcentage(10, 20);
+		$this->assertFalse($result);
+	} 
 
 	/*
 	 * Test years left to live based on age and gender. The age is higher than required. 
