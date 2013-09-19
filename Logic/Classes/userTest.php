@@ -58,6 +58,18 @@ class UserTest extends PHPUnit_Framework_TestCase {
 		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->getAge(), $user->getGender());
 		$this->assertFalse($yearsLeftToLive);
 	}
+	
+	function testNumberOfUnachievedGoalsOk() {
+		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 9, 'female', 'cleaner', '1234');
+		$numberOfUnachiededGoals = $user->numberOfUnachievedGoals(10, 5);
+		$this->assertEquals($numberOfUnachiededGoals, 5);
+	}
+
+	function testNumberOfUnachievedGoalsLow() {
+		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 9, 'female', 'cleaner', '1234');
+		$numberOfUnachiededGoals = $user->numberOfUnachievedGoals(10, 11);
+		$this->assertFalse($numberOfUnachiededGoals);
+	}
 
 	/*
 	 * Test years left to live based on age and gender. The age is higher than required. 
