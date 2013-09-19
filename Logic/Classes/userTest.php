@@ -87,7 +87,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	/*
-	 * Two test of the numberOfUnachievedGoalsProcentage()-function
+	 * Two tests of the numberOfUnachievedGoalsProcentage()-function
 	 * */
 	function testNumberOfUnachievedGoalsProcentageOk() {
 		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 9, 'female', 'cleaner', '1234');
@@ -102,9 +102,10 @@ class UserTest extends PHPUnit_Framework_TestCase {
 	} 
 	
 	
-	
-
-	function testFearFactor() {
+	/*
+	 * One test of the fearFactor()-function
+	 * */
+	function testFearFactorOk() {
 		$user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner', '1234');
 
 		$yearsLeftToLive = $user->calculateYeasLeftToLive($user->age, $user->gender);
@@ -115,6 +116,12 @@ class UserTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($fearFactor, '1.862');
 	}
+	
+	
+	/*
+	 * Two tests of the testFearFactorProcentage()-function
+	 * */
+
 
 }
 ?>
