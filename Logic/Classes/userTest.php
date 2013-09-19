@@ -21,6 +21,12 @@ class UserTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($age, 45);
 	}
 
+	function testGetWrongProperty() {
+		$user = new User('Jens', 'Hansen', 'jhansen', 'jens@hansen.dk', 'Copenhagen', 'Denmark', 45, 'male', 'carpenter', '1234');
+		$age = $user->wrong_property;
+		$this->assertNull($age);
+	}
+
 	/*
 	 * Test years left to live based on age and gender (male)
 	 * TestCase1 of hybrid flow graph
