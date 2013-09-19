@@ -10,10 +10,10 @@ class GoalTest extends PHPUnit_Framework_TestCase {
 		$this->assertNotNull($goal);
 	}
 	
-	function testGetTitle() {
+	function xtestGetTitle() {
 		$goal = new Goal(1, 1, '2013-08-30', 'Go to Syria', 'Talk to the Syrian leader and tell him that he is OK');
-		$goalId = $goal->goalId;
-		$this->assertEquals($goalId, 1);
+		$title = $goal->title;
+		$this->assertEquals($title, 'Go to Syria');
 	}
 	
 	function testGetWrongProperty() {
