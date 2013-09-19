@@ -72,7 +72,13 @@ class User {
 
 	public function numberOfUnachievedGoalsProcentage($totalGoals, $goalsAchieved) {
 
-			return $goalsAchieved / $totalGoals * 100;
+			$result = $goalsAchieved / $totalGoals * 100;
+			
+			if($result > 100) {
+				return false;
+			} else {
+				return $result;
+			}
 
 	}
 
