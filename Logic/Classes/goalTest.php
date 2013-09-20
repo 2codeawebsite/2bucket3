@@ -10,6 +10,18 @@ class GoalTest extends PHPUnit_Framework_TestCase {
 		$this->assertNotNull($goal);
 	}
 	
+	function xtestGetTitle() {
+		$goal = new Goal(1, 1, '2013-08-30', 'Go to Syria', 'Talk to the Syrian leader and tell him that he is OK');
+		$title = $goal->title;
+		$this->assertEquals($title, 'Go to Syria');
+	}
+	
+	function testGetWrongProperty() {
+		$goal = new Goal(1, 1, '2013-08-30', 'Go to Syria', 'Talk to the Syrian leader and tell him that he is OK');
+		$prop = $goal->wrong_property;
+		$this->assertNull($prop);
+	}
+	
 	/*
 	 * This test is a bit irellevant! This could just as well be a database select statement 
 	 * SELECT COUNT(goalId) FROM goals WHERE userId = 1

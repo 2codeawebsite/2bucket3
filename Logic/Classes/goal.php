@@ -9,6 +9,7 @@ class Goal {
 	private $startDate;
 	private $title;
 	private $description;
+	private $bucket;
 	
 	/*
 	 * With this type of constructor we are able to do method overload. 
@@ -34,7 +35,7 @@ class Goal {
 		$this->userId 		= $userId;
 		$this->startDate 	= $startDate;
 		$this->title 		= $title;
-		$this->description 	= $description;	
+		$this->description 	= $description;
 	}
 	
 	public function __construct3($goalId, $userId, $startDate, $title, $description) {
@@ -51,13 +52,14 @@ class Goal {
         }
     }
 	
-	public static function constructGoal($userId, $startDate, $title, $description) {
+	public static function constructGoal($userId, $startDate, $title, $description, $bucket) {
 		$goal = new self();
 		
 		$goal->userId 		= $userId;
 		$goal->startDate 	= $startDate;
 		$goal->title 		= $title;
 		$goal->description 	= $description;
+		$goal->bucket 		= $bucket;
 				
 		return $goal;
 	}

@@ -1,7 +1,7 @@
 body {
     margin:50px 0 0 0;
-    background:#ededed url('assets/images/background-003.jpg') top no-repeat;
-    background-size:contain;
+    background:#ededed url('assets/images/background-004.jpg') top no-repeat;
+    background-size:1100px;
     font-family: 'Pathway Gothic One', sans-serif;
     font-size:1.2em;
 }
@@ -55,6 +55,7 @@ body {
     right:440px;
     top:20px;
     width:200px;
+    min-height:115px;
     padding:30px 0;
     text-align:center;
     border-radius:5px;
@@ -64,6 +65,7 @@ body {
     right:220px;
     top:20px;
     width:200px;
+    min-height:115px;
     padding:30px 0;
     text-align:center;
     border-radius:5px;
@@ -73,6 +75,7 @@ body {
     right:0px;
     top:20px;
     width:200px;
+    min-height:115px;
     padding:30px 0;
     text-align:center;
     border-radius:5px;
@@ -111,4 +114,47 @@ input[type="submit"] { border:1px solid #3d3d3d;padding:10px; }
     border-right: 1px solid #333333;
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
+}
+
+#site .content {
+	width:630px;
+}
+#site aside {
+	float:right;
+	width:200px;
+	height:500px;
+	border-left:1px solid #65E018;
+}
+#site .account_menu ul {
+	list-style:none;
+	padding:0px;
+}
+#site .account_menu ul li {
+	list-style:none;
+	border-bottom: 1px solid #65E018;
+}
+#site .account_menu ul li a {
+	display:block;
+	padding:5px 0 5px 10px;
+	color:#333333;
+	text-decoration:none;
+}
+#site .account_menu ul li a:hover,#site .account_menu ul li a.active  {
+	background-color:#3D3D3D;
+	color:#65E018;
+}
+#site .content .goalbox {
+	border:1px solid #3D3D3D;
+	background-color:#fff;
+	padding:10px;
+	margin:0 0 10px 0;
+}
+#site .content .goalbox h2 {
+	margin:0px;
+	padding:0px;
+	color:#65E018;
+}
+#site .content .goalbox p.description {
+	margin:0px;
+	padding:0px;
 }

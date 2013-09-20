@@ -7,10 +7,10 @@
 -- ----------------------------------------------------
 DROP VIEW IF EXISTS `bucket_db`.`all_on_user`;
 
-DROP TABLE IF EXISTS `bucket_db`.`goalList` ;
-DROP TABLE IF EXISTS `bucket_db`.`list` ;
-DROP TABLE IF EXISTS `bucket_db`.`goal` ;
-DROP TABLE IF EXISTS `bucket_db`.`user` ;
+DROP TABLE IF EXISTS `bucket_db`.`goalList`;
+DROP TABLE IF EXISTS `bucket_db`.`list`;
+DROP TABLE IF EXISTS `bucket_db`.`goal`;
+DROP TABLE IF EXISTS `bucket_db`.`user`;
 
 SET CHARSET 'UTF8';
 
@@ -45,88 +45,67 @@ INSERT INTO `bucket_db`.`user` VALUES (4, 1341390188, 'Jóannes', 'Fløtti', 'jo
 -- Table `bucket_db`.`goal`
 -- -----------------------------------------------------
 
-CREATE  TABLE IF NOT EXISTS `bucket_db`.`goal` (
-  `ID` INT NOT NULL AUTO_INCREMENT ,
-  `user_id` INT NOT NULL ,
-  `start_date` DATE NOT NULL ,
-  `title` VARCHAR(255) NOT NULL ,
-  `description` TEXT NULL ,
-  `achieved` INT NOT NULL DEFAULT 0,
-  PRIMARY KEY (`ID`) ,
-  INDEX `user_id` (`user_id` ASC) ,
-  CONSTRAINT `user_id_1`
-    FOREIGN KEY (`user_id` )
-    REFERENCES `bucket_db`.`user` (`ID` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `bucket_db`.`goal` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `start_date` date NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text,
+  PRIMARY KEY (`ID`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB;
 
-INSERT INTO `bucket_db`.`goal` VALUES (1, 1, '2013-08-01', 'Travel to Italy', 'Say hi to the pobe and swim in the lake of souls', 0);
-INSERT INTO `bucket_db`.`goal` VALUES (2, 1, '2013-08-02', 'Take driver license to motorbike', '...so I can ride into the sunset', 1);
-INSERT INTO `bucket_db`.`goal` VALUES (3, 3, '2013-08-22', 'Kill a spider', 'I hate them', 0);
-INSERT INTO `bucket_db`.`goal` VALUES (4, 2, '2013-09-01', 'Travel to Italy', 'Say hi to the pobe and swim in the lake of souls', 0);
-INSERT INTO `bucket_db`.`goal` VALUES (5, 2, '2013-09-01', 'Travel to Spain', 'Say hi', 1);
-INSERT INTO `bucket_db`.`goal` VALUES (6, 2, '2013-09-01', 'Travel to Australia', 'Say hi', 1);
+INSERT INTO `bucket_db`.`goal` (`ID`, `user_id`, `start_date`, `title`, `description`) VALUES(1, 1, '2013-08-01', 'Travel to Italy', 'Say hi to the pobe and swim in the lake of souls');
+INSERT INTO `bucket_db`.`goal` (`ID`, `user_id`, `start_date`, `title`, `description`) VALUES(2, 1, '2013-08-02', 'Take driver license to motorbike', '...so I can ride into the sunset');
+INSERT INTO `bucket_db`.`goal` (`ID`, `user_id`, `start_date`, `title`, `description`) VALUES(3, 3, '2013-08-22', 'Kill a spider', 'I hate them');
+INSERT INTO `bucket_db`.`goal` (`ID`, `user_id`, `start_date`, `title`, `description`) VALUES(4, 2, '2013-09-01', 'Travel to Italy', 'Say hi to the pobe and swim in the lake of souls');
+INSERT INTO `bucket_db`.`goal` (`ID`, `user_id`, `start_date`, `title`, `description`) VALUES(5, 2, '2013-09-01', 'Travel to Spain', 'Say hi');
+INSERT INTO `bucket_db`.`goal` (`ID`, `user_id`, `start_date`, `title`, `description`) VALUES(6, 2, '2013-09-01', 'Travel to Australia', 'Say hi');
+INSERT INTO `bucket_db`.`goal` (`ID`, `user_id`, `start_date`, `title`, `description`) VALUES(11, 1, '2013-09-26', 'Diving course', 'Make diving master');
+INSERT INTO `bucket_db`.`goal` (`ID`, `user_id`, `start_date`, `title`, `description`) VALUES(13, 1, '2013-10-12', 'Grow a beard', 'Because it''s the manly thing to do');
 
 
 -- -----------------------------------------------------
 -- Table `bucket_db`.`list`
 -- -----------------------------------------------------
 
-CREATE  TABLE IF NOT EXISTS `bucket_db`.`list` (
-  `ID` INT NOT NULL AUTO_INCREMENT ,
-  `user_id` INT NOT NULL ,
-  `name` VARCHAR(255) NOT NULL ,
-  `description` TEXT NULL ,
-  PRIMARY KEY (`ID`) ,
-  INDEX `user_id` (`user_id` ASC) ,
-  CONSTRAINT `user_id_2`
-    FOREIGN KEY (`user_id` )
-    REFERENCES `bucket_db`.`user` (`ID` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `bucket_db`.`list` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text,
+  PRIMARY KEY (`ID`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB;
 
-INSERT INTO `bucket_db`.`list` VALUES (1, 1, 'Lifelong', 'This is my life long bucket list with all the goals that I want to acheve before I die');
-INSERT INTO `bucket_db`.`list` VALUES (2, 1, 'Before 40 years', 'All the goals I want to reach before I get 40');
-INSERT INTO `bucket_db`.`list` VALUES (3, 2, 'Lifelong', 'This is my life long bucket list with all the goals that I want to acheve before I die');
-INSERT INTO `bucket_db`.`list` VALUES (4, 3, 'Lifelong', 'This is my life long bucket list with all the goals that I want to acheve before I die');
-INSERT INTO `bucket_db`.`list` VALUES (5, 4, 'Lifelong', 'This is my life long bucket list with all the goals that I want to acheve before I die');
-INSERT INTO `bucket_db`.`list` VALUES (6, 2, 'Family', 'This is my list with family things');
-
+INSERT INTO `bucket_db`.`list` (`ID`, `user_id`, `name`, `description`) VALUES(1, 1, 'Lifelong', 'This is my life long bucket list with all the goals that I want to acheve before I die');
+INSERT INTO `bucket_db`.`list` (`ID`, `user_id`, `name`, `description`) VALUES(2, 1, 'Before 40 years', 'All the goals I want to reach before I get 40');
+INSERT INTO `bucket_db`.`list` (`ID`, `user_id`, `name`, `description`) VALUES(3, 2, 'Lifelong', 'This is my life long bucket list with all the goals that I want to acheve before I die');
+INSERT INTO `bucket_db`.`list` (`ID`, `user_id`, `name`, `description`) VALUES(4, 3, 'Lifelong', 'This is my life long bucket list with all the goals that I want to acheve before I die');
+INSERT INTO `bucket_db`.`list` (`ID`, `user_id`, `name`, `description`) VALUES(5, 4, 'Lifelong', 'This is my life long bucket list with all the goals that I want to acheve before I die');
+INSERT INTO `bucket_db`.`list` (`ID`, `user_id`, `name`, `description`) VALUES(6, 2, 'Family', 'This is my list with family things');
 
 -- -----------------------------------------------------
 -- Table `bucket_db`.`goalList`
 -- -----------------------------------------------------
 
-CREATE  TABLE IF NOT EXISTS `bucket_db`.`goalList` (
-  `ID` INT NOT NULL AUTO_INCREMENT ,
-  `goal` INT NOT NULL ,
-  `list` INT NOT NULL ,
-  PRIMARY KEY (`ID`) ,
-  INDEX `goal` (`goal` ASC) ,
-  INDEX `list` (`list` ASC) ,
-  CONSTRAINT `goal`
-    FOREIGN KEY (`goal` )
-    REFERENCES `bucket_db`.`goal` (`ID` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `list`
-    FOREIGN KEY (`list` )
-    REFERENCES `bucket_db`.`list` (`ID` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-INSERT INTO `bucket_db`.`goalList` VALUES (1, 1, 1);
-INSERT INTO `bucket_db`.`goalList` VALUES (2, 2, 1);
-INSERT INTO `bucket_db`.`goalList` VALUES (3, 3, 1);
-INSERT INTO `bucket_db`.`goalList` VALUES (4, 4, 2);
-INSERT INTO `bucket_db`.`goalList` VALUES (5, 5, 2);
-INSERT INTO `bucket_db`.`goalList` VALUES (6, 1, 6);
-INSERT INTO `bucket_db`.`goalList` VALUES (7, 2, 3);
+CREATE TABLE IF NOT EXISTS `bucket_db`.`goalList` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `goal` int(11) NOT NULL,
+  `list` int(11) NOT NULL,
+  `achieved` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  KEY `goal` (`goal`),
+  KEY `list` (`list`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB;
 
 
+INSERT INTO `bucket_db`.`goalList` (`ID`, `user_id`, `goal`, `list`, `achieved`) VALUES(1, 1, 1, 1, 0);
+INSERT INTO `bucket_db`.`goalList` (`ID`, `user_id`, `goal`, `list`, `achieved`) VALUES(2, 1, 2, 2, 0);
+INSERT INTO `bucket_db`.`goalList` (`ID`, `user_id`, `goal`, `list`, `achieved`) VALUES(6, 1, 11, 2, 0);
+INSERT INTO `bucket_db`.`goalList` (`ID`, `user_id`, `goal`, `list`, `achieved`) VALUES(7, 1, 12, 2, 0);
 
 -- ---------------------------------------------------------
 -- CREATION OF VIEWS

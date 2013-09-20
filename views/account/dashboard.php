@@ -1,14 +1,19 @@
 <?php
-include('header.php');
-$qry = new Queries();
+include('../../header.php');
+$page 	= 'dashboard';
+$qry 	= new Queries();
 ?>
-	<div id="site"> 
-		<h1>Newest created goals in all users bucketlists!</h1>
-		<?php
-			$result = $qry->getBucketList();
-			
-			foreach($result as $row){
-				$goals = $qry->getBucketGoals($row['ID']);
+<div id="site"> 
+<?php
+	if($_SESSION['user']):
+		$list = $qry->getBucketList($_SESSION['user']['ID']);
+		include('menu.php');
+	?>
+	<div class="content">
+	    <h2>Dashboard</h2>
+	    <?php
+	    	foreach($list as $row){
+	    		$goals = $qry->getBucketGoals($row['ID']);
 	    		echo '<div class="goalbox">';
 	    		echo '<h2>'.$row['name'].'</h2>';
 				echo '<p class="description">'.$row['description'].'</p>';
@@ -25,8 +30,10 @@ $qry = new Queries();
 					}
 					echo '</p>';
 				}
-			}
-		?>
-		
+				echo '</div>';
+	    	}
+	    ?>
 	</div>
-<?php include('footer.php'); ?>
+	<?php endif; ?>
+</div>
+<?php include('../../footer.php'); ?>
