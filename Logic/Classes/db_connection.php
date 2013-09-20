@@ -1,6 +1,8 @@
 <?php
 
-class Connection {
+include_once 'db_interface';
+
+class Connection implements db {
 	
 	private $db = array();
 	private $connection;
