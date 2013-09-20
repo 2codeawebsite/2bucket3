@@ -10,7 +10,7 @@ class Queries {
 	
 	public function getAvarageGoals() {
 		$instance = new Connection();
-		$result = $instance->run_query('SELECT (SELECT COUNT(ID) FROM goal WHERE achieved=0) / (SELECT COUNT(ID) FROM user)');
+		$result = $instance->run_query('SELECT (SELECT COUNT(ID) FROM goalList WHERE achieved=0) / (SELECT COUNT(ID) FROM user)');
 		$row = $result->fetch_array(MYSQLI_NUM);
 		return $row[0];
 	}
