@@ -2,7 +2,7 @@
 
 include_once 'db_interface';
 
-class Connection implements db {
+class Connection  {
 	
 	private $db = array();
 	private $connection;
