@@ -1,8 +1,8 @@
 <?php 
 
-require_once 'user.php';
-require_once 'db_connection.php';
-require_once 'db_queries.php';
+include_once 'user.php';
+include_once 'db_connection.php';
+include_once 'db_queries.php';
 
 
 class UserTestDb extends PHPUnit_Framework_TestCase {

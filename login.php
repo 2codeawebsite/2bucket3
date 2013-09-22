@@ -1,6 +1,6 @@
 <?php 
-require_once 'Logic/Classes/goal.php';
-require_once 'Logic/Classes/db_queries.php';
+include_once 'Logic/Classes/goal.php';
+include_once 'Logic/Classes/db_queries.php';
 	
 include('header.php');
 

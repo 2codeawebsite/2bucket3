@@ -1,8 +1,8 @@
 <?php
-require_once 'appconfig.php';
+include_once 'appconfig.php';
 include_once 'db_connection.php';
-require_once 'user.php';
-require_once 'goal.php';
+include_once 'user.php';
+include_once 'goal.php';
 
 class Queries {
 	

@@ -1,7 +1,7 @@
 <?php
 
-require_once 'goal.php';
-require_once 'user.php';
+include_once 'goal.php';
+include_once 'user.php';
 
 class GoalTest extends PHPUnit_Framework_TestCase {
 	

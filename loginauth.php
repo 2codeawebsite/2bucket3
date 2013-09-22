@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'Logic/Classes/db_queries.php';
+include_once 'Logic/Classes/db_queries.php';
 
 if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])) {
 	$un = $_POST['username'];

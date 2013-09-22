@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require_once 'Logic/Classes/user.php';
-require_once 'Logic/Classes/db_queries.php';
+include_once 'Logic/Classes/user.php';
+include_once 'Logic/Classes/db_queries.php';
 
 $user = new User('Ulla', 'Hansen', 'uhansen', 'ulla@hansen.dk', 'Copenhagen', 'Denmark', 45, 'female', 'cleaner', '1234');
 $result1 = $user->fearFactorProcentage(12, 'male', 8, 7);

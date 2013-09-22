@@ -1,8 +1,8 @@
 <?php 
 session_start();
-require_once 'Logic/Classes/goal.php';
-require_once 'Logic/Classes/user.php';
-require_once 'Logic/Classes/db_queries.php';
+include_once 'Logic/Classes/goal.php';
+include_once 'Logic/Classes/user.php';
+include_once 'Logic/Classes/db_queries.php';
 
 $goal = new Goal();
 $procent = new Queries();
@@ -52,7 +52,7 @@ $procent = new Queries();
 	    			echo '</div>';
 				} 
 				if (isset($_POST['id']) && !empty($_POST['id'])) {
-					require_once 'Logic/Classes/performance_test_frontpage.php';
+					include_once 'Logic/Classes/performance_test_frontpage.php';
 				}
 			?>
 		<div class="achieved green">

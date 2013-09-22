@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php include_once('header.php'); ?>
 <div id="site">
 	<form action="createuser2.php" method="POST" class="form_inputs">
 		<table cellspacing="0" cellpadding="0">
