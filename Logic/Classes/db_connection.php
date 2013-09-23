@@ -1,7 +1,4 @@
 <?php
-
-include_once 'db_interface';
-
 class Connection  {
 	
 	private $db = array();

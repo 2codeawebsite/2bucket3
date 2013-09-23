@@ -14,6 +14,9 @@ $qry 	= new Queries();
 	    <?php
 	    	foreach($list as $row){
 	    		$goals = $qry->getBucketGoals($row['ID']);
+				echo "<pre>";
+				print_r($goals);
+				
 	    		echo '<div class="goalbox">';
 	    		echo '<h2>'.$row['name'].'</h2>';
 				echo '<p class="description">'.$row['description'].'</p>';

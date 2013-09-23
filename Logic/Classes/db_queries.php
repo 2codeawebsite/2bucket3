@@ -40,13 +40,17 @@ class Queries {
 	
 	public function createGoal($goal){
 		$instance = new Connection();
-		$bucket = unserialize($goal->bucket);
+		$bucket = $goal->bucket;
 		$result = $instance->run_query_last_inserted_id('INSERT INTO goal (`user_id`, `start_date`, `title`, `description`) 
 			VALUES ("'.$goal->userId.'", "'.$goal->startDate.'", "'.$goal->title.'", "'.$goal->description.'")');
 		
-		foreach($bucket as $key => $bucketId){
-			$instance->run_query('Insert into goallist (user_id,goal,list) Values ("'.$goal->userId.'","'.$result.'","'.$bucketId.'")');
+		if($instance->run_query('select list from goallist where user_id = "'.$goal->userId.'" AND goal is null AND list = '.$bucket)){
+			$instance->run_query('Delete from goallist where user_id = "'.$goal->userId.'" AND goal is null AND list = "'.$bucket.'"');
 		}
+		
+		//foreach($bucket as $key => $bucketId){
+			$instance->run_query('Insert into goallist (user_id,goal,list) Values ("'.$goal->userId.'","'.$result.'","'.$bucket.'")');
+		//}
 		return $result;
 	}
 	public function getGoals($userId){
@@ -73,8 +77,9 @@ class Queries {
 	}
 	public function createBucketList($userId, $title, $description) {
 		$instance = new Connection();
-		$result = $instance->run_query('INSERT INTO list (`user_id`, `name`, `description`) 
-			VALUES ("'.$userId.'", "'.$title.'", "'.$description.'")');	
+		$result = $instance->run_query_last_inserted_id('INSERT INTO list (`user_id`, `name`, `description`) 
+			VALUES ("'.$userId.'", "'.$title.'", "'.$description.'")');
+		$instance->run_query('INSERT INTO goallist (user_id,list,achieved) values ("'.$userId.'","'.$result.'","0")');
 		return $result;
 	}
 	public function getBucketList($userId = false){

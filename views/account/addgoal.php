@@ -16,7 +16,7 @@ $qry = new Queries();
 			<p>Lists:</p>
 			<?php
 				foreach($lists as $row){
-					echo '<input type="checkbox" name="list[]" value="'.$row['ID'].'"> '.$row['name'].'<br>';
+					echo '<input type="radio" name="list" value="'.$row['ID'].'"> '.$row['name'].'<br>';
 				}
 			?>
 			<p><input type="submit" value="Create Goal" class="green"></p>

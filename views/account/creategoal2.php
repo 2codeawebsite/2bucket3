@@ -18,7 +18,7 @@ if(
 	
 	$title 			= $_POST['title'];
 	$description 	= $_POST['description'];
-	$bucket 		= serialize($_POST['list']);
+	$bucket 		= $_POST['list'];
 	
 	$goal = Goal::constructGoal($userId, $endDate, $title, $description, $bucket);
 	$qry = new Queries();

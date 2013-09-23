@@ -1,11 +1,12 @@
 <?php 
 session_start();
-include_once 'Logic/Classes/goal.php';
-include_once 'Logic/Classes/user.php';
+//include_once 'Logic/Classes/goal.php';
+//include_once 'Logic/Classes/user.php';
 include_once 'Logic/Classes/db_queries.php';
 
 $goal = new Goal();
 $procent = new Queries();
+
 ?>
 
 <!DOCTYPE html>

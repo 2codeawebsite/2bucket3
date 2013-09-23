@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vært: localhost
--- Genereringstid: 22. 09 2013 kl. 15:21:17
+-- Genereringstid: 17. 09 2013 kl. 09:33:09
 -- Serverversion: 5.6.12-log
 -- PHP-version: 5.4.16
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `goal` (
   `description` text,
   PRIMARY KEY (`ID`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Data dump for tabellen `goal`
@@ -49,10 +49,7 @@ INSERT INTO `goal` (`ID`, `user_id`, `start_date`, `title`, `description`) VALUE
 (3, 2, '2013-10-17', 'Grow a beard 2', 'Because it''s the manly thing to do'),
 (4, 1, '2013-10-17', 'Take the big train', 'Because it''s the manly thing to do'),
 (5, 1, '2013-10-17', 'A night in the tower', 'Spend a night in the tower with princess Fiona'),
-(6, 1, '2013-10-17', '200 km', 'Drive faster than 200 km/h'),
-(7, 1, '2013-10-17', 'Grow a beard', 'Because it''s the manly thing to do'),
-(8, 2, '2013-10-19', 'Grow a beard', 'Because it''s the manly thing to do'),
-(9, 2, '2013-10-19', 'ayers rock', 'Because it''s the manly thing to do');
+(6, 1, '2013-10-17', '200 km', 'Drive faster than 200 km/h');
 
 -- --------------------------------------------------------
 
@@ -71,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `goallist` (
   KEY `goal` (`goal`),
   KEY `list` (`list`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Data dump for tabellen `goallist`
@@ -80,12 +77,10 @@ CREATE TABLE IF NOT EXISTS `goallist` (
 INSERT INTO `goallist` (`ID`, `user_id`, `goal`, `list`, `achieved`) VALUES
 (1, 2, 1, 2, 0),
 (2, 2, 2, 1, 0),
-(3, 2, 3, 1, 1),
-(4, 2, 4, 3, 1),
-(5, 2, 5, 3, 1),
-(6, 2, 6, 4, 0),
-(7, 2, 8, 2, 0),
-(8, 2, 9, 1, 0);
+(3, 2, 3, 1, 0),
+(4, 1, 4, 3, 0),
+(5, 1, 5, 3, 0),
+(6, 1, 6, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -101,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `list` (
   `description` text,
   PRIMARY KEY (`ID`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Data dump for tabellen `list`
@@ -111,10 +106,7 @@ INSERT INTO `list` (`ID`, `user_id`, `name`, `description`) VALUES
 (1, 2, 'Trip to australia', 'So many things to do'),
 (2, 2, 'Diving', 'So many things to do'),
 (3, 1, 'Disney World', 'Trip to disney world and visit Mickey mouse'),
-(4, 1, 'Formula 1', 'My racing life'),
-(5, 1, 'Trip to australia', 'So many things to do'),
-(6, 1, 'Trip to australia', 'So many things to do'),
-(7, 2, 'Trip to australia', 'So many things to do');
+(4, 1, 'Formula 1', 'My racing life');
 
 -- --------------------------------------------------------
 
@@ -149,7 +141,3 @@ INSERT INTO `user` (`ID`, `facebook_id`, `first_name`, `last_name`, `username`, 
 (2, '1341390186', 'Nicolai', 'Lund', 'nicolailund', 'info@2bucket.dk', 'Copenhagen', 'Denmark', 25, 'male', 'Student', '1234'),
 (3, '1341390187', 'Mares', 'Hansen', 'mareshansen', 'info@2bucket.dk', 'Copenhagen', 'Denmark', 22, 'male', 'Model', '1234'),
 (4, '1341390188', 'Jóannes', 'Fløtti', 'joannesflotti', 'info@2bucket.dk', 'Copenhagen', 'Denmark', 28, 'female', 'Student', '1234');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
