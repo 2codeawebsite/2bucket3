@@ -10,14 +10,14 @@ class Queries {
 	
 	public function getAvarageGoals() {
 		$instance = new Connection();
-		$result = $instance->run_query('SELECT (SELECT COUNT(ID) FROM goalList WHERE achieved=0) / (SELECT COUNT(ID) FROM user)');
+		$result = $instance->run_query('SELECT (SELECT COUNT(ID) FROM goallist WHERE achieved=0) / (SELECT COUNT(ID) FROM user)');
 		$row = $result->fetch_array(MYSQLI_NUM);
 		return $row[0];
 	}
 
 	public function procentageAchievedGoalsAllUsers() {
 		$instance = new Connection();
-		$result = $instance->run_query('SELECT CAST((SELECT COUNT(ID) FROM goalList WHERE achieved=1) / (SELECT COUNT(ID) FROM goal) * 100 as UNSIGNED) as average');
+		$result = $instance->run_query('SELECT CAST((SELECT COUNT(ID) FROM goallist WHERE achieved=1) / (SELECT COUNT(ID) FROM goal) * 100 as UNSIGNED) as average');
 		$row = $result->fetch_array(MYSQLI_NUM);
 		return $row[0];
 	}
@@ -45,18 +45,18 @@ class Queries {
 			VALUES ("'.$goal->userId.'", "'.$goal->startDate.'", "'.$goal->title.'", "'.$goal->description.'")');
 		
 		foreach($bucket as $key => $bucketId){
-			$instance->run_query('Insert into goalList (user_id,goal,list) Values ("'.$goal->userId.'","'.$result.'","'.$bucketId.'")');
+			$instance->run_query('Insert into goallist (user_id,goal,list) Values ("'.$goal->userId.'","'.$result.'","'.$bucketId.'")');
 		}
 		return $result;
 	}
 	public function getGoals($userId){
 		$instance = new Connection();
-		$result = $instance->run_query_return_array('Select g.ID,g.start_date,g.title,g.description,gl.achieved,DATEDIFF(start_date,NOW()) as days from goal g left join goalList gl on g.ID = gl.goal where gl.user_id = "'.$userId.'" order by g.start_date');
+		$result = $instance->run_query_return_array('Select g.ID,g.start_date,g.title,g.description,gl.achieved,DATEDIFF(start_date,NOW()) as days from goal g left join goallist gl on g.ID = gl.goal where gl.user_id = "'.$userId.'" order by g.start_date');
 		return $result;
 	}
 	public function getBucketGoals($bucketId){
 		$instance = new Connection();
-		$result = $instance->run_query_return_array('Select g.ID,g.start_date,g.title,g.description,gl.achieved,DATEDIFF(start_date,NOW()) as days from goal g left join goalList gl on g.ID = gl.goal where gl.list = "'.$bucketId.'" order by g.start_date');
+		$result = $instance->run_query_return_array('Select g.ID,g.start_date,g.title,g.description,gl.achieved,DATEDIFF(start_date,NOW()) as days from goal g left join goallist gl on g.ID = gl.goal where gl.list = "'.$bucketId.'" order by g.start_date');
 		return $result;
 	}
 	public function loginAuth($username, $password){
@@ -80,9 +80,9 @@ class Queries {
 	public function getBucketList($userId = false){
 		$instance = new Connection();
 		if($userId):
-			$result = $instance->run_query_return_array('Select l.ID,l.name,l.description from goalList gl left outer join list l on l.ID = gl.list where gl.user_id = "'.$userId.'" group by gl.list order by l.name');
+			$result = $instance->run_query_return_array('Select l.ID,l.name,l.description from goallist gl left outer join list l on l.ID = gl.list where gl.user_id = "'.$userId.'" group by gl.list order by l.name');
 		else :
-			$result = $instance->run_query_return_array('Select l.ID,l.name from goalList gl left join list l on l.ID = gl.list group by l.ID order by l.name');
+			$result = $instance->run_query_return_array('Select l.ID,l.name from goallist gl left join list l on l.ID = gl.list group by l.ID order by l.name');
 		endif;
 		
 		return $result;
@@ -90,9 +90,9 @@ class Queries {
 	public function getBucketListWithGoal($userId = false){
 		$instance = new Connection();
 		if($userId):
-			$result = $instance->run_query_return_array('Select l.ID,l.name from goalList gl left join list l on l.ID = gl.list where gl.user_id = "'.$userId.'" group by l.ID order by l.name');
+			$result = $instance->run_query_return_array('Select l.ID,l.name from goallist gl left join list l on l.ID = gl.list where gl.user_id = "'.$userId.'" group by l.ID order by l.name');
 		else :
-			$result = $instance->run_query_return_array('Select l.ID,l.name from goalList gl left join list l on l.ID = gl.list group by l.ID order by l.name');
+			$result = $instance->run_query_return_array('Select l.ID,l.name from goallist gl left join list l on l.ID = gl.list group by l.ID order by l.name');
 		endif;
 		
 		return $result;
@@ -112,7 +112,7 @@ class Queries {
 	
 	public function fearFactor($userId) {
 		$instance = new Connection();
-		$result = $instance->run_query('SELECT (SELECT COUNT(ID) FROM goalList WHERE achieved=1 AND user_id="'.$userId.'") AS achieved, (SELECT COUNT(ID) FROM goal WHERE user_id="'.$userId.'") AS total');
+		$result = $instance->run_query('SELECT (SELECT COUNT(ID) FROM goallist WHERE achieved=1 AND user_id="'.$userId.'") AS achieved, (SELECT COUNT(ID) FROM goal WHERE user_id="'.$userId.'") AS total');
 		$row = $result->fetch_array(MYSQLI_NUM);
 		return $row;
 	}
