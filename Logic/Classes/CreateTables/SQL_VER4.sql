@@ -76,9 +76,9 @@ CREATE TABLE IF NOT EXISTS `goallist` (
 
 INSERT INTO `goallist` (`ID`, `user_id`, `goal`, `list`, `achieved`) VALUES
 (1, 2, 1, 2, 0),
-(2, 2, 2, 1, 0),
+(2, 2, 2, 1, 1),
 (3, 2, 3, 1, 0),
-(4, 1, 4, 3, 0),
+(4, 1, 4, 3, 1),
 (5, 1, 5, 3, 0),
 (6, 1, 6, 4, 0);
 
