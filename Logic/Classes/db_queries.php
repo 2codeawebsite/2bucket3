@@ -48,9 +48,8 @@ class Queries {
 			$instance->run_query('Delete from goallist where user_id = "'.$goal->userId.'" AND goal is null AND list = "'.$bucket.'"');
 		}
 		
-		//foreach($bucket as $key => $bucketId){
-			$instance->run_query('Insert into goallist (user_id,goal,list) Values ("'.$goal->userId.'","'.$result.'","'.$bucket.'")');
-		//}
+		$instance->run_query('Insert into goallist (user_id,goal,list) Values ("'.$goal->userId.'","'.$result.'","'.$bucket.'")');
+
 		return $result;
 	}
 	public function getGoals($userId){

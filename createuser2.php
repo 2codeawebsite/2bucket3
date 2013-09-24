@@ -30,11 +30,13 @@ if(
 	$password = $_POST['password'];
 	
 	$user = new User($firstname, $lastname, $username, $email, $city, $country, $age, $gender, $worktitle, $password);
-	$qry = new Queries();
-	$userId = $qry->createUser($user);
+	$userId = $user->createUser($user);
 	
 	if($userId){
 		$goal = Goal::constructGoal($userId, date("Y-m-d"), 'My first goal', 'My first goal is to create my first goal.');
+		$qry = Queries();
+		echo $qry->createGoal($goal);
+		die();
 		if($qry->createGoal($goal)) {
 			if($qry->createBucketList($userId, "Lifelong", "This is the lifelong bucket list")) {
 				$_SESSION['new_user'] = 'Your new user has been created. Please login now';

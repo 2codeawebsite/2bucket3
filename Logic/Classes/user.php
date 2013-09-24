@@ -14,6 +14,9 @@ class User {
 	private $gender;
 	private $worktitle;
 	private $password;
+	
+	private $min_age = 10;
+	private $max_age = 120;
 
 	public function __construct($first_name, $last_name, $username, $email, $city, $country, $age, $gender, $worktitle, $password) {	
 		$this->first_name 	= $first_name;
@@ -37,6 +40,21 @@ class User {
             return $this->$property;
         }
     }
+	
+	public function createUser($user) {
+		
+		if ($user->age >= $this->min_age && $user->age <= $this->max_age) {
+			$qry = new Queries();
+			$userId = $qry->createUser($user);
+			if($userId) {
+				return $userId;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
 
 	public function calculateYeasLeftToLive($age, $gender) {
 
